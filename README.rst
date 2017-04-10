@@ -22,6 +22,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+Known Issues
+------------
+
+PS-0 - CWE-655 - User on-boarding MUST be easyer
+PS-1 - CWE-779 - logs cause data leak
+PS-2 - CWE-16 - Configuration hardening
+PS-3 - CWE-100 & CWE-149 - passwords with special charterers are courupted by input form
+PS-4 - CWE-654 - need MFA
+PS-5 - CWE-565 - need to harden cookies for surviving hostile environments
+PS-6 - CWE-310 - Need to enable proper TLS and encryption everywhere
+PS-7 - CWE-770 - need anti-brute force logic
+
+CWE-657 - see above
 
 Possible Improvements:
 ---------------------
