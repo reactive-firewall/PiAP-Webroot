@@ -87,7 +87,7 @@ test: cleanup
 	$(QUIET)php -l webroot/PiAP/pages/networking.php
 	$(QUIET)php -l webroot/PiAP/pages/do_login.php
 	$(QUIET)php -l webroot/PiAP/pages/logout.php
-	$(QUIET)php -l webroot/PiAP/pages/sessions.php
+	$(QUIET)php -l webroot/PiAP/pages/session.php
 	$(QUIET)php -l webroot/PiAP/pages/lan_setup.php
 	$(QUIET)php -l webroot/PiAP/pages/wan_setup.php
 	$(QUIET)php -l webroot/PiAP/pages/do_wan_setup.php
