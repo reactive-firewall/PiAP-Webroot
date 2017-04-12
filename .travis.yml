@@ -27,4 +27,4 @@ before_install:
 install: "true"
 # command to run tests
 script:
-  - php -l webroot/PiAP/pages/*.php
+  - make test
