@@ -1,0 +1,267 @@
+/*
+Everything
+	use box sizing
+*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*
+The Main Body Style 
+	Simple fonts and some padding.
+*/
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: white;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+/*
+The BOLD Style 
+	Be bold.
+*/
+b, strong {
+  font-weight: 700;
+}
+
+/*
+The Main Theme Style 
+	not much here, yet.
+*/
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+/*
+Generic Buttons
+	Simple curved edges and interactive.
+*/
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+/*
+ALERT errors 
+	Show error messages in red.
+	What a mess.
+*/
+.alert-error {
+  max-width: 330px;
+  position: relative;
+  padding: 25px;
+  color: #f04040;
+  padding: 6px 12px;
+  margin: 0 auto;
+  margin-bottom: 0;
+  white-space: wrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: none;
+  background-image: linear-gradient(to bottom,#f0dede 0,#e9c3c3 100%);
+  background-repeat: repeat-x;
+  border: 1px solid #efc0c0;
+}
+
+/*
+ALERT Success 
+	Show success messages in green.
+	What a joy.
+	Colors should be in sync with the error alerts but in green.
+*/
+.alert-success {
+  max-width: 330px;
+  position: relative;
+  padding: 25px;
+  color: #204020;
+  padding: 6px 12px;
+  margin: 0 auto;
+  margin-bottom: 0;
+  white-space: wrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: none;
+  background-image: linear-gradient(to bottom,#def0de 0,#c3e9c3 100%);
+  background-repeat: repeat-x;
+  border: 1px solid #80ef80;
+}
+
+/*
+ALERT panel
+	Show error messages in panel.
+*/
+.alert-panel {
+  padding: 25px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 auto;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  background-color: light-grey;
+  border-radius: 4px;
+  -webkit-transition: opacity 3s ease-in-out;
+  -moz-transition: opacity 3s ease-in-out;
+  -ms-transition: opacity 3s ease-in-out;
+  -o-transition: opacity 3s ease-in-out;
+  opacity: 1;
+  box-sizing: border-box;
+}
+
+/*
+ALERT text action
+*/
+.txt-alert {
+  position: relative;
+  padding: 3px;
+  font-size: 14px;
+}
+
+/*
+Logout panel
+	Show logout footer in panel.
+*/
+.panel-logout {
+  max-width: 300px;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+/*
+Logout text action
+	Show footer links in grey.
+*/
+.txt-action {
+  position: relative;
+  padding: 3px;
+  color: grey;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+/*
+Logout text
+	Show footer in grey.
+*/
+.txt-logout {
+  position: relative;
+  padding: 1px;
+  color: grey;
+  font-size: 10px;
+}
+
+/* Show box messages in grey */
+
+.box {
+  max-width: 660px;
+  padding: 25px;
+  margin: 0 auto;
+  background-image: none;
+  border: 1px solid transparent;
+  background-color: light-grey;
+  border-radius: 4px;
+  position: relative;
+  color: dark-grey;
+  margin: 0 auto;
+}
+
+
+/*
+Generic Lables
+	Simple curved edges and stylish.
+*/
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+/*
+Default Label
+	Boring grey.
+*/
+.label-default {
+    background-color: #777;
+}
+
+/*
+Primary Label
+	PiAP Pink.
+*/
+.label-primary {
+    background-color: deeppink;
+    color: black;
+}
+
+/*
+Info Label
+	Info Blue.
+*/
+.label-info {
+    background-color: #337ab7;
+}
+
+/*
+Warning Label
+	Alert amber.
+*/
+.label-warning {
+    background-color: #f0ad4e;
+}
+
+/*
+Success Label
+	OK Green.
+*/
+.label-success {
+    background-color: #5cb85c;
+}
+
+/*
+Danger Label
+	Panic Red.
+*/
+.label-danger {
+    background-color: #d9534f;
+}
+
