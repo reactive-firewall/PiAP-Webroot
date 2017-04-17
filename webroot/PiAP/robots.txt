@@ -1,0 +1,45 @@
+User-agent: *
+Disallow: /*~
+
+User-agent: *
+Disallow: /*.py
+
+User-agent: *
+Disallow: /*.bash
+
+User-agent: *
+Disallow: /*.sh
+
+User-agent: *
+Disallow: /*.class
+
+User-agent: *
+Disallow: /*.asp
+
+User-agent: *
+Disallow: /*.xhtml
+
+User-agent: *
+Disallow: /.DS_Store
+
+User-agent: *
+Disallow: /.*
+
+User-agent: *
+Disallow: /cache/*
+
+User-agent: *bot
+Disallow: /pages/do_*
+
+User-agent: *bot
+Disallow: /bin/*
+
+User-agent: *bot
+Disallow: /files/*
+
+User-agent: Googlebot
+Disallow: /scripts/*
+
+User-agent: Prism
+Disallow: /scripts/*
+
