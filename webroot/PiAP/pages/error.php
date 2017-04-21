@@ -8,8 +8,8 @@ if (! $error) {
     include_once 'logout.php';
 }
 function xerror_tagline() {
-	$theResult = "Uh oh! Did the monkeys escape? Better find the nearest benevolent geek."
-	return $theResult;;
+	$theResult = "Uh oh! Did the monkeys escape? Better find the nearest benevolent geek.";
+	return $theResult;
 }
 ?>
 <!DOCTYPE html>
