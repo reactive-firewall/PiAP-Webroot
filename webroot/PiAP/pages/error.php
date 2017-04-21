@@ -7,9 +7,9 @@ if (! $error) {
     $error = strip_input('Oops! An unknown error happened.');
     include_once 'logout.php';
 }
-if (login_check() != true) {
-	header("Location: /pages/error.php?err=500");
-	exit();
+function xerror_tagline() {
+	$theResult = "Uh oh! Did the monkeys escape? Better find the nearest benevolent geek."
+	return $theResult;;
 }
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ if (login_check() != true) {
 		<title>PiAP - Error</title>
 		<meta name="description" content="PiAP Error">
 		<meta name="author" content="PiAP">
-		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/main.css"/>
     </head>
     <body>
 	<div id="error_page" class="container">
@@ -29,6 +29,10 @@ if (login_check() != true) {
 				<h2 id="error_name">There was a problem</h2>
 				<p class="txt-alert" id="error_msg"><?php xecho($error); ?></p>
 			</div>
+		</div>
+		<div class="row">
+			<p class="txt-action" id="error_sass"><?php xerror_tagline(); ?></p>
+			<p class="txt-action" id="error_help">... or perhaps just try again.</p>
 		</div>
 	</div>
 	</body>

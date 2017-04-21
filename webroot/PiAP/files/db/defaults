@@ -1,0 +1,26 @@
+#!/usr/bin/env less
+
+# The recovery password for your PiAP
+DEFAULT_PASSWORD="REDACTED_FOR_BETA"
+
+# The recovery password salt for your PiAP (Advanced setting)
+DEFAULT_SALT=$(echo -n "${RANDOM:-$(date)}" | openssl dgst -sha256 | cut -d \  -f 2 )
+
+# The recovery WiFi password for your PiAP
+DEFAULT_WIFI_PASSWORD="PW_REDACTED_F0R_BETA"
+
+# The recovery WiFi for your PiAP
+DEFAULT_WIFI_NAME="SetupPocketPiAP"
+
+# the Default interface to use for connecting to the internet
+DEFAULT_WAN_IFACE="wlan0"
+
+# the Default interface to use as a gateway interface. (Advanced setting) (NOT IMPLEMENTED YET) Usualy only useful for bridging.
+DEFAULT_GW_IFACE="${DEFAULT_WAN_IFACE:-br0}"
+
+# the Default interface to use as a gateway interface. (Advanced setting) (NOT IMPLEMENTED YET) Usualy only useful for roaming.
+DEFAULT_RECON_IFACE="${DEFAULT_WAN_IFACE:-wlan2}"
+
+# the default interface to use to host a WiFi hotspot
+DEFAULT_LAN_IFACE="wlan1"
+

@@ -1,0 +1,304 @@
+/*
+The Grid.
+ Rows -> panels -> content
+
+*/
+.row {
+  width:100%;
+}
+
+
+/* NAVIGATION */
+li {
+    float: left;
+}
+
+ul.topnav li {float: left;}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+ul.topnav {
+    background-color: #333;
+}
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+    ul.topnav li.right a.logout-btn {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  }
+  .panel {
+      padding: 5px;
+      margin: 0 auto;
+      width: 100%;
+  }
+}
+
+li a, .dropbtn, .logout-btn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: DeepPink;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: DeepPink;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content a:hover {
+	background-color: White
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* Button Themes */
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+/* Rounded buttons */
+.btn-group-lg > .btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+
+/* Primary Button */
+
+.btn-primary {
+    color: white;
+    background-color: DeepPink;
+    border-color: rgb(135,135,135);
+}
+
+/* button off */
+
+.btn-off {
+    color: black;
+    background-color: silver;
+    border-color: rgb(135,135,135);
+    border: 1px solid;
+}
+
+/* button on */
+
+.btn-on {
+    color: White;
+    background-color: #5cb85c;
+    border-color: rgb(135,135,135);
+    border: 1px solid;
+}
+
+.col-sm {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* extra info that is not critical to display. */
+.lrg-screen {
+    width: 0px;
+    display: none !important;
+    hidden: true;
+}
+
+/* Raw text should be in a box */
+pre.box {
+    max-width: 100%;
+    max-height: 300px;
+    overflow: auto;
+}
+
+/*
+ grid panels with responsive design
+*/
+.panel, .panel-wide {
+  display: inline-block;
+  padding: 1px;
+  vertical-align: top;
+  margin: 0 auto;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.panel-wide {
+  width: 100%;
+}
+
+@media screen and (min-width: 600px){
+  .panel {
+    width: 50%;
+  }
+  .panel, .panel-wide {
+    padding: 5px;
+  }
+  pre.box {
+    max-width: 100%;
+    max-height: 30%;
+    overflow: auto;
+  }
+  pre.box {
+    max-height: 30%;
+  }
+  
+  .lrg-screen {
+    width: 0px;
+    display: none !important;
+    hidden: true;
+  }
+
+}
+
+@media screen and (min-width: 900px){
+  .panel, .panel-wide {
+    padding: 10px;
+  }
+  .panel {
+    width: 33.33333%;
+  }
+  .lrg-screen {
+    width: 0px;
+    display: none !important;
+    hidden: true;
+  }
+}
+
+@media screen and (min-width: 1500px){
+  .panel {
+    width: 25%;
+  }
+  .lrg-screen {
+    width: auto;
+    display: block;
+    hidden: false;
+  }
+}
+
+/*rgb(232,232,232) == #e8e8e8 == silver*/
+/*rgb(245,245,245) == #f5f5f5 == whitesmoke*/
+.panel-heading {
+  margin: 0 auto;
+  background-image: -webkit-linear-gradient(top,#f5f5f5 0,#e8e8e8 100%);
+  background-image: -o-linear-gradient(top,#f5f5f5 0,#e8e8e8 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#e8e8e8));
+  background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+  background-color: #e8e8e8;
+  padding: 10px 15px;
+  border-color: #e8e8e8;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  width: 100%;
+}
+
+.panel-content {
+  padding: 15px;
+  margin: 0 auto;
+  background-image: none;
+  border: 1px solid transparent;
+  border-color: #e8e8e8;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  width: 100%;
+  overflow: auto;
+}
+
+/* TABLES */
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #e8e8e8;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+    border-top: 0;
+}
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+th {
+    text-align: left;
+}
+
+.form-td {
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-color: transparent;
+  border-radius: 3px;
+  color: black;
+}
+
+td, th {
+    padding: 0;
+}

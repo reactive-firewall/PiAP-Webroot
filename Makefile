@@ -107,6 +107,11 @@ test-tox: cleanup
 
 cleanup:
 	$(QUIET)rm -f webroot/PiAP/pages/*~ 2>/dev/null || true
+	$(QUIET)rm -f webroot/PiAP/styles/*~ 2>/dev/null || true
+	$(QUIET)rm -f webroot/PiAP/scripts/*~ 2>/dev/null || true
+	$(QUIET)rm -f webroot/PiAP/files/*~ 2>/dev/null || true
+	$(QUIET)rm -f webroot/PiAP/cache/*~ 2>/dev/null || true
+	$(QUIET)rm -f webroot/PiAP/bin/*~ 2>/dev/null || true
 	$(QUIET)rm -f webroot/PiAP/*~ 2>/dev/null || true
 	$(QUIET)rm -f webroot/PiAP/cache/* 2>/dev/null || true
 	$(QUIET)rm -f ./*~ 2>/dev/null || true

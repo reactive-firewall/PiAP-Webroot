@@ -1,10 +1,17 @@
 <?php
 
-include_once 'PiAP-config.php';
+include_once 'session.php';
 include_once 'functions.php';
 include_once 'networking.php';
 
-sec_session_start();
+function can_x509_check() {
+	return False;;
+}
+
+function has_downloaded_x509_check() {
+	return True;;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +59,52 @@ sec_session_start();
 				<div class="row">
 					<div class="panel" id="settings_box">
 						<div class="panel-heading"><a name="User_Settings"><h3>User Settings</h3></a></div>
-						<div class="panel-content"><p><strong>NOT AVAILABLE</strong> YET</p></div>
+						<div class="panel-content">
+							<div class="row">
+								<form action="/pages/do_legacy_auth_setup.php" method="post" name="legacy_auth_form" class="form-config">
+									<div class="row">
+										<h2 class="form-config-heading"><strong>NOT AVAILABLE</strong> YET</h2>
+									</div>
+									<div class="row">
+										<label for="input_username" class="sr-only">Set Login Username</label>
+										<input type="text" name="input_username" id="input_username" class="form-control" placeholder="Admin Name" required autofocus/>
+									</div>
+									<div class="row">
+										<label for="legacy_password" class="sr-only">Set Login Password</label>
+										<input type="password" name="legacy_password" id="challenge" class="form-control" placeholder="Password" required/>
+									</div>
+									<div class="row">
+										<?php if (can_x509_check() != true) : ?>
+											<button class="btn btn-lg btn-block" id="disable_button" onclick="javascript:void(0)">Disable</button>
+										<?php endif; ?>
+										<button class="btn btn-lg btn-primary btn-block" id="update_button" onclick="javascript:void(0)">Update</button>
+									</div>
+								</form>
+							</div>
+							<div class="row">
+								<form action="/pages/do_auth_setup.php" method="post" name="portal_auth_settings_form" class="form-config">
+									<div class="row">
+										<h2 class="form-config-heading">x509 Auth<strong>NOT AVAILABLE</strong> YET</h2>
+									</div>
+									<div class="row">
+										<label for="auth_cert_button" class="sr-only">Admin User Certificate</label>
+										<?php if (can_x509_check() != true) : ?>
+											<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="javascript:void(0)">Generate</button>
+										<?php else : ?>
+											<?php if (has_downloaded_x509_check() != true) : ?>
+												<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="javascript:void(0)">Download</button>
+											<?php else : ?>
+												<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="javascript:void(0)">Regenerate</button>
+											<?php endif; ?>
+										<?php endif; ?>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="panel" id="info_box">
+						<div class="panel-heading"><a name="User_Info"><h3>User Info</h3></a></div>
+						<div class="panel-content"><h2><strong>NOT AVAILABLE</strong> YET</h2></div>
 					</div>
 				</div>
 		<?php endif; ?>

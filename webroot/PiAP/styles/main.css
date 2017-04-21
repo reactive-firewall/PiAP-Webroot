@@ -21,6 +21,20 @@ body {
   line-height: 1.42857143;
 }
 
+.sr-only {
+    display: block;
+    width: 100%;
+    hidden: false;
+}
+
+@media screen-reader {
+	.sr-only {
+		width: 0px;
+		display: none !important;
+		hidden: true;
+	}
+}
+
 /*
 The BOLD Style 
 	Be bold.
@@ -36,6 +50,48 @@ The Main Theme Style
 .theme-showcase .navbar .container {
   width: auto;
 }
+
+/*
+Generic inputs,
+	Use a pointer.
+*/
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+/*
+Generic selections,
+	Use simple text.
+*/
+button, select {
+    text-transform: none;
+}
+
+/*
+Button readability,
+	Always use visible text.
+*/
+button {
+    overflow: visible;
+}
+
+/*
+Form options,
+	Be compact.
+*/
+button, input, optgroup, select, textarea {
+    margin: 0;
+}
+
+/*
+Form inputs,
+	Be compact.
+*/
+input {
+    line-height: normal;
+}
+
 
 /*
 Generic Buttons
@@ -183,18 +239,17 @@ Logout text
   font-size: 10px;
 }
 
-/* Show box messages in grey */
-
+/*
+	Show box messages as bubbles.
+*/
 .box {
   max-width: 660px;
   padding: 25px;
   margin: 0 auto;
   background-image: none;
   border: 1px solid transparent;
-  background-color: light-grey;
   border-radius: 4px;
   position: relative;
-  color: dark-grey;
   margin: 0 auto;
 }
 
@@ -216,6 +271,13 @@ Generic Lables
     border-radius: .25em;
 }
 
+/* Show disabled messages in grey */
+
+.label-disabled, .disabled {
+  background-color: silver;
+  color: black;
+}
+
 /*
 Default Label
 	Boring grey.
@@ -229,8 +291,7 @@ Primary Label
 	PiAP Pink.
 */
 .label-primary {
-    background-color: deeppink;
-    color: black;
+    background-color: DeepPink;
 }
 
 /*
