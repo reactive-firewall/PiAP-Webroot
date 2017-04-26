@@ -70,7 +70,7 @@
  */
 function hashsubmit(sensitive_input, context_in) {
 	// find the real context
-	var context = (sensitive_input).closest("form");
+	var context = (sensitive_input).closest("login_form");
 	if (context_in.id == context.id){
 		//probably the same and safe to use
 		var hashed_input = document.createElement("input");

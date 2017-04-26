@@ -1,6 +1,6 @@
 <?php
 
-include_once 'PiAP-config.php';
+include_once 'paranoia.php';
 include_once 'functions.php';
 
 sec_session_start();
