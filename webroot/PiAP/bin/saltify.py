@@ -31,7 +31,7 @@ def main(argv=None):
 	# print("PiAP Keyring")
 	try:
 		try:
-			piaplib.keyring.saltify(argv)
+			piaplib.keyring.saltify.main(argv)
 		except Exception as cerr:
 			print(str(cerr))
 			print(str(cerr.args))
