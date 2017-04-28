@@ -35,7 +35,7 @@ if (login_check() === true) {
 						}
 					?>
 				</div>
-				<form action="/pages/do_login.php" method="post" name="login_form" class="form-signin">
+				<form action="/pages/do_login.php" method="post" id="login_form" name="login_form" class="form-signin">
 					<div class="row">
 						<h2 class="form-signin-heading">Please sign in</h2>
 					</div>
@@ -48,7 +48,7 @@ if (login_check() === true) {
 						<input type="password" name="password" id="password" class="form-control" placeholder="Password" required/>
 					</div>
 					<div class="row">
-						<button class="btn btn-lg btn-primary btn-block" id="login_button" onclick="hashsubmit(this.login_form.password, this.login_form);">Sign in</button>
+						<button class="btn btn-lg btn-primary btn-block" id="login_button" onclick="hashsubmit(this.form.password, this.form);">Sign in</button>
 					</div>
 				</form>
 			</div>

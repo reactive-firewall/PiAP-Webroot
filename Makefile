@@ -109,6 +109,7 @@ install-cgi: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/power_off.bash /srv/webroot/PiAP/bin/power_off.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/reboot.bash /srv/webroot/PiAP/bin/reboot.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/saltify.bash /srv/webroot/PiAP/bin/saltify.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/saltify.py /srv/webroot/PiAP/bin/saltify.py
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/scan_that_air.bash /srv/webroot/PiAP/bin/scan_that_air.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/scan_the_air.bash /srv/webroot/PiAP/bin/scan_the_air.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/service_AP_heal.bash /srv/webroot/PiAP/bin/service_AP_heal.bash
@@ -139,6 +140,8 @@ uninstall-cgi: must_be_root
 	$(QUIET)$(RM) /srv/webroot/PiAP/bin/power_off.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/bin/reboot.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/bin/saltify.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/webroot/PiAP/bin/saltify.py 2>/dev/null || true
+	$(QUIET)$(RM) /srv/webroot/PiAP/bin/saltify.pyc 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/bin/scan_that_air.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/bin/scan_the_air.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/bin/service_AP_heal.bash 2>/dev/null || true
@@ -234,7 +237,7 @@ purge: clean uninstall
 	$(QUIET)python -m pip uninstall piaplib
 	$(QUIET)$(ECHO) "$@: Done."
 
-test: cleanup
+test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/index.php
 	$(QUIET)php -l webroot/PiAP/pages/index.php
 	$(QUIET)php -l webroot/PiAP/pages/functions.php
@@ -257,8 +260,12 @@ test: cleanup
 	$(QUIET)php -l webroot/PiAP/pages/profile.php
 	$(QUIET)$(ECHO) "$@: Done."
 
+test-extras:
+	$(QUIET)flake8 --ignore=W191,W391 --max-line-length=100 --count webroot/PiAP/bin/saltify.py || true
+	$(QUIET)$(ECHO) "$@: Done."
+	
 test-tox: cleanup
-	$(QUIET)tox --
+	$(QUIET)tox flake
 	$(QUIET)$(ECHO) "$@: Done."
 
 cleanup:
@@ -268,6 +275,7 @@ cleanup:
 	$(QUIET)rm -f webroot/PiAP/files/*~ 2>/dev/null || true
 	$(QUIET)rm -f webroot/PiAP/cache/*~ 2>/dev/null || true
 	$(QUIET)rm -f webroot/PiAP/bin/*~ 2>/dev/null || true
+	$(QUIET)rm -f webroot/PiAP/bin/*.pyc 2>/dev/null || true
 	$(QUIET)rm -f webroot/PiAP/*~ 2>/dev/null || true
 	$(QUIET)rm -f webroot/PiAP/cache/* 2>/dev/null || true
 	$(QUIET)rm -f ./*~ 2>/dev/null || true
