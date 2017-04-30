@@ -13,9 +13,9 @@ include_once 'dashboard_functions.php';
 		<title>PiAP Dashboard</title>
 		<meta name="description" content="PiAP Dashboard">
 		<meta name="author" content="PiAP">
-		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
 		<!-- RFC2318 defines text/css -->
-		<link rel="stylesheet" type="text/css" href="/styles/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/grid.css"/>
 	</head>
 	<body>
 		<?php if (login_check() != true) : ?>
@@ -47,9 +47,6 @@ include_once 'dashboard_functions.php';
 			</ul>
 		</nav>
 		<div class="container">
-			<div class="row">
-				<p>Welcome <?php xecho($_SESSION['username']); ?>!</p>
-			</div>
 			<div class="row">
 				<div class="panel" id="uptime_box">
 					<div class="panel-heading">

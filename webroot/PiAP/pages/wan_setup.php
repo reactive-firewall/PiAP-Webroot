@@ -1,25 +1,16 @@
 <?php
-
 include 'session.php';
 include_once 'networking.php';
 
-sec_session_start();
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>PiAP Setup</title>
-		<meta name="description" content="PiAP Setup">
+		<title>PiAP WAN Setup</title>
+		<meta name="description" content="PiAP Wan Setup">
 		<meta name="author" content="PiAP">
-		<?php
-			if (login_check() === true) {
-				if (isset($_GET['wan_success'])) {
-					echo '<meta http-equiv="Refresh" content="1; URL=https://pocket.PiAP.local/pages/wan_setup.php">';;
-				}
-			}
-        ?>
 		<!-- RFC2318 defines text/css -->
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
 		<link rel="stylesheet" type="text/css" href="/styles/sign_in.css" media="screen"/>
@@ -69,9 +60,6 @@ sec_session_start();
 						<div class="panel-heading"><a name="wan_settings"><h3>WAN Setup</h3></a></div>
 							<div class="panel-content">
 								<form action="/pages/do_wan_setup.php" method="post" name="wan_settings_form" class="form-config">
-									<div class="row">
-										<h2 class="form-config-heading">Wan Settings</h2>
-									</div>
 									<div class="row">
 										<label for="target_ssid" class="sr-only">Public WiFi Name</label>
 										<input type="text" name="target_ssid" id="target_ssid" class="form-control" placeholder="WiFi Name" required autofocus/>

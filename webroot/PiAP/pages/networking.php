@@ -31,31 +31,28 @@ function wifi_list() {
 }
 
 function interface_list() {
-	exec(sprintf('../bin/interface_list.bash'), $res, $rval);;
+	$blob = "";
+	exec(sprintf('python3 -m piaplib.pocket lint check iface --list ;'), $res, $rval);;
 	if ($rval === 0) {
-			return $res;;
+		for ($num = 0; $num < count($res) ; $num++) {
+			$blob .= "" . $res[$num] . "\n";;
+		};
 	} else {
-		return array();;
+		return tool_error_msg("Server error. (tool_bug) 500");;
 	}
+	return $blob;;
 }
 
 function interface_status() {
-	$the_iface_list = interface_list();;
-	$blob = "<table class=\"table table-striped\">";
-	$blob .= "<thead><th>Interface</th><th>MAC</th><th>IP Addresses</th><th>Status</th></thead><tbody>";
-	foreach ($the_iface_list as $iface_name) {
-		$res = "";;
-		exec(sprintf('../bin/interface_status.bash %s', strip_input($iface_name)), $res, $rval);;
-		if ($rval === 0) {
-			for ($num = 0; $num < count($res) ; $num++) {
-				$blob .= "" . $res[$num] . "\n";;
-			};
-		} else {
-			return tool_error_msg("Server error. (tool_bug) 500");
-		}
-	};
-	$blob .= "</tbody>";
-	$blob .= "</table>";;
+	$blob = "";
+	exec(sprintf('python3 -m piaplib.pocket lint check users --all --html ;'), $res, $rval);;
+	if ($rval === 0) {
+		for ($num = 0; $num < count($res) ; $num++) {
+			$blob .= "" . $res[$num] . "\n";;
+		};
+	} else {
+		return tool_error_msg("Server error. (tool_bug) 500");
+	}
 	return $blob;;
 }
 

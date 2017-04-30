@@ -72,7 +72,7 @@ NODE_DATA=$(sudo USE_HTML=0 /srv/PiAP/bin/scan_that_air.bash | fgrep -m1 "${1}" 
 
 echo "country=US"
 echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev"
-echo "update_config=1"
+#echo "update_config=1"
 echo ""
 echo "network={"
 if [[ ( -n $(echo -n "$NODE_DATA" | cut -d- -f 1 2>/dev/null | fgrep -v "\"\"" ) ) ]] ; then

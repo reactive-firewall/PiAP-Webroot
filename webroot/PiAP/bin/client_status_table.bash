@@ -62,5 +62,5 @@
 ulimit -t 5
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
-sudo -u www-data -g netdev python3 -m piaplib.pocket lint check clients --all --html ; EXIT_CODE=$? ; wait ;
+sudo -u www-data -g netdev python3 -m piaplib.pocket lint check clients --all --html ; EXIT_CODE=$? ; sudo -k ; wait ;
 exit ${EXIT_CODE:-3} ;

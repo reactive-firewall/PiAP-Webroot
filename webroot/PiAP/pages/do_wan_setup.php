@@ -11,7 +11,7 @@ if (login_check() != true) {
 else {
 if (isset($_POST['target_ssid'])) {
 	$ssid = filter_input(INPUT_POST, 'target_ssid', FILTER_SANITIZE_STRING);;
-	$passphrase = '';;
+	$challenge = '';;
 	if (isset($_POST['target_ssid'], $_POST['challenge'])) {
 	$challenge = filter_input(INPUT_POST, 'challenge', FILTER_SANITIZE_STRING);;
 	}

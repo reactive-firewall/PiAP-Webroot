@@ -2,7 +2,7 @@
 
 include_once 'PiAP-config.php';
 include_once 'functions.php';
-include_once 'session.php';
+include 'session.php';
 
 if (login_check() === true){
 
@@ -17,7 +17,7 @@ if (login_check() === true){
 
 	if (power_down() === true) {
 		// tool success
-		header("Location: /pages/index.php");
+		header("Location: /pages/logout.php");
 		exit();
 	} else {
 		// tool failed

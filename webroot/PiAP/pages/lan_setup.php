@@ -1,7 +1,6 @@
 <?php
 
-include_once 'PiAP-config.php';
-include_once 'session.php';
+include 'session.php';
 include_once 'functions.php';
 include_once 'networking.php';
 
@@ -17,12 +16,6 @@ include_once 'networking.php';
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
 		<link rel="stylesheet" type="text/css" href="/styles/sign_in.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/styles/grid.css" media="screen"/>
-		<?php
-			if (isset($_GET['lan_success'])) {
-				echo '<meta http-equiv="Refresh" content="0; URL=https://pocket.PiAP.local/pages/lan_setup.php">';;
-			}
-		?>
-
 		<!-- RFC4329 defines application/javascript -->
 	</head>
 	<body>

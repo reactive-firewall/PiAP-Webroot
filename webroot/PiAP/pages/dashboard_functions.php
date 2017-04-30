@@ -4,139 +4,122 @@ include_once 'paranoia.php';
 include_once 'functions.php';
 
 function uptime_status() {
-    exec(sprintf('uptime -p'), $res, $rval);;
-    if ($rval === 0) {
+	exec(sprintf('uptime -p'), $res, $rval);;
+	if ($rval === 0) {
 		$blob = "<p>PiAP have has been ";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= xssafe($res[$num]) . "\n";
 		};
 		$blob .= "</p>";
-                return $blob ;;
-        }
-        else {
+		return $blob ;;
+	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
-        }
+	}
 }
 
 function memory_status() {
-    exec(sprintf('../bin/memory_status_table.bash'), $res, $rval);;
-    if ($rval === 0) {
+	exec(sprintf('../bin/memory_status_table.bash'), $res, $rval);;
+	if ($rval === 0) {
 		$blob = "<div>";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= $res[$num] . "\n";
 		};
 		$blob .= "</div>";
-                return $blob ;;
-        }
-        else {
+		return $blob ;;
+	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
-        }
+	}
 }
 
 function entropy_status() {
-    exec(sprintf('/usr/lib/nagios/plugins/check_entropy'), $res, $rval);;
-    if ($rval === 0) {
+	exec(sprintf('/usr/lib/nagios/plugins/check_entropy'), $res, $rval);;
+	if ($rval === 0) {
 		$blob = "<pre class=\"box\">Entropy ";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= xssafe($res[$num]) . "\n";
 		};
 		$blob .= "</pre>";
-                return $blob ;;
-        }
-        else {
+		return $blob ;;
+	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
-        }
+	}
 }
 
 function disk_space_status() {
-    exec(sprintf('df -h'), $res, $rval);;
-    if ($rval === 0) {
+	exec(sprintf('df -h'), $res, $rval);;
+	if ($rval === 0) {
 		$blob = "<pre class=\"box\">";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= xssafe($res[$num]) . "\n";
 		};
 		$blob .= "</pre>";
-                return $blob ;;
-        }
-        else {
+		return $blob ;;
+	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
-        }
+	}
 }
 
 function disk_status() {
-    exec(sprintf('../bin/disk_status_table.bash'), $res, $rval);;
-    if ($rval === 0) {
+	exec(sprintf('../bin/disk_status_table.bash'), $res, $rval);;
+	if ($rval === 0) {
 		$blob = "<div class=\"row\">";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= $res[$num] . "\n";
 		};
 		$blob .= "</div>";
-                return $blob ;;
-        }
-        else {
+		return $blob ;;
+	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
-        }
+	}
 }
 
 function temperature_status() {
-    exec(sprintf('../bin/temperature_status.bash'), $res, $rval);;
-    if ($rval === 0) {
+	exec(sprintf('../bin/temperature_status.bash'), $res, $rval);;
+	if ($rval === 0) {
 		$blob = "<p>";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= xssafe($res[$num]) . "\n";
 		};
 		$blob .= "</p>";
-                return $blob ;;
-        }
-        else {
+		return $blob ;;
+	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
-        }
+	}
 }
 
 function firewall_status() {
-    exec(sprintf('../bin/fw_status_table.bash'), $res, $rval);;
-    if ($rval === 0) {
+	exec(sprintf('../bin/fw_status_table.bash'), $res, $rval);;
+	if ($rval === 0) {
 		$blob = "<div class=\"row\">";;
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= $res[$num] . "\n";;
 		};
 		$blob .= "</div>";;
-                return $blob ;;
-        }
-        else {
+		return $blob ;;
+	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
-        }
+	}
 }
 
 function user_list() {
-    exec(sprintf('../bin/user_list.bash'), $res, $rval);;
-    if ($rval === 0) {
-                return $res;;
-        }
-        else {
-                return array();;
-        }
+	exec(sprintf('python3 -m piaplib.pocket lint check users --list'), $res, $rval);;
+	if ($rval === 0) {
+		return $res;;
+	}
+	else {
+		return array();;
+	}
 }
 
 function user_status() {
-        $the_user_list = user_list();;
-	$blob = "<table class=\"table table-striped\">";
-	$blob .= "<thead><th>User</th><th>Terminal</th><th>IP Addresses</th><th>Activity</th></thead><tbody>";
-	foreach ($the_user_list as $user_name) {
-	$res = "";;
-    exec(sprintf('../bin/user_status.bash %s', strip_input($user_name)), $res, $rval);;
-    if ($rval === 0) {
-		for ($num = 0; $num < count($res) ; $num++) {
-			$blob .= "" . $res[$num] . "\n";;
-		};
-        }
-        else {
-		return tool_error_msg("Server error. (tool_bug) 500");
-        }
-	};
-	$blob .= "</tbody>";
-	$blob .= "</table>";;
-        return $blob;;
-
+		exec(sprintf('python3 -m piaplib.pocket lint check users --all --html', strip_input($user_name)), $res, $rval);;
+		if ($rval === 0) {
+			for ($num = 0; $num < count($res) ; $num++) {
+				$blob .= "" . $res[$num] . "\n";;
+			};
+		} else {
+			return tool_error_msg("Server error. (tool_bug) 500");
+		}
+	return $blob;;
 }
 

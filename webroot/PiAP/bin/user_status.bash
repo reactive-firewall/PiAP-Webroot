@@ -62,5 +62,5 @@
 ulimit -t 5
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
-python3 -m piaplib.pocket lint check users --all --html ; wait ;
+python3 -m piaplib.pocket lint check users --html --user="${1:www-data}" ; wait ;
 exit 0;
