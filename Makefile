@@ -49,7 +49,7 @@ ifeq "$(RMDIR)" ""
 endif
 
 ifeq "$(INSTALL)" ""
-	INSTALL=install
+	INSTALL=`which install`
 	ifeq "$(INST_OWN)" ""
 		INST_OWN=-o root -g www-data
 	endif
@@ -60,10 +60,7 @@ ifeq "$(INSTALL)" ""
 		INST_OPTS=-m 640
 	endif
 	ifeq "$(INST_DIR_OPTS)" ""
-		INST_OPTS=-m 750
-	endif
-	ifeq "$(INSTALL_DIR)" ""
-		INST_OPTS=install -d
+		INST_DIR_OPTS=-m 750 -d
 	endif
 endif
 
@@ -88,11 +85,11 @@ install: install-webroot install-scripts install-styles install-pages install-cg
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-webroot: webroot must_be_root
-	$(QUIET)$(INSTALL_DIR) $(INST_OWN) $(INST_DIR_OPTS) webroot/PiAP/ /srv/webroot/PiAP/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-cgi: install-webroot must_be_root
-	$(QUIET)$(INSTALL_DIR) $(INST_OWN) $(INST_DIR_OPTS) webroot/PiAP/bin /srv/webroot/PiAP/bin
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/bin
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/client_status_table.bash /srv/webroot/PiAP/bin/client_status_table.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/compile_interface /srv/webroot/PiAP/bin/compile_interface
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) webroot/PiAP/bin/disk_status_table.bash /srv/webroot/PiAP/bin/disk_status_table.bash
@@ -156,7 +153,7 @@ uninstall-cgi: must_be_root
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-scripts: install-webroot must_be_root
-	$(QUIET)$(INSTALL_DIR) $(INST_OWN) $(INST_DIR_OPTS) webroot/PiAP/scripts /srv/webroot/PiAP/scripts
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/scripts
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/scripts/hashing.js /srv/webroot/PiAP/scripts/hashing.js
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/scripts/sha512.js /srv/webroot/PiAP/scripts/sha512.js
 	$(QUIET)$(ECHO) "$@: Done."
@@ -168,7 +165,7 @@ uninstall-scripts: must_be_root
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-styles: install-webroot must_be_root
-	$(QUIET)$(INSTALL_DIR) $(INST_OWN) $(INST_DIR_OPTS) webroot/PiAP/styles /srv/webroot/PiAP/styles
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/styles
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/styles/main.css /srv/webroot/PiAP/styles/main.css
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/styles/grid.css /srv/webroot/PiAP/styles/grid.css
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/styles/sign_in.css /srv/webroot/PiAP/styles/sign_in.css
@@ -206,7 +203,7 @@ uninstall-pages: install-webroot must_be_root
 
 install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/index.php /srv/webroot/PiAP/index.php
-	$(QUIET)$(INSTALL_DIR) $(INST_OWN) $(INST_DIR_OPTS) webroot/PiAP/pages/ /srv/webroot/PiAP/pages/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/pages/
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/pages/index.php /srv/webroot/PiAP/pages/index.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/pages/functions.php /srv/webroot/PiAP/pages/functions.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) webroot/PiAP/pages/dashboard_functions.php /srv/webroot/PiAP/pages/dashboard_functions.php
