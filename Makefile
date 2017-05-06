@@ -237,7 +237,7 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall: uninstall-cgi uninstall-pages uninstall-scripts uninstall-styles
-	$(QUITE)$(QUIET)python3 -m pip uninstall piaplib
+	$(QUITE)$(QUIET)python3 -m pip uninstall -y piaplib
 	$(QUITE) $(WAIT)
 	$(QUIET)$(ECHO) "$@: Done."
 
