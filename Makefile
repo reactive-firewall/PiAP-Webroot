@@ -183,10 +183,11 @@ uninstall-styles: must_be_root
 	$(QUIET)$(RMDIR) /srv/PiAP/styles 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
-uninstall-pages: install-webroot must_be_root
+uninstall-pages: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/pages/index.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/functions.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/dashboard_functions.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/dashboard.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/networking.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/do_login.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/logout.php 2>/dev/null || true
@@ -214,6 +215,7 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/pages/
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/index.php /srv/PiAP/pages/index.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/functions.php /srv/PiAP/pages/functions.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/dashboard.php /srv/PiAP/pages/dashboard.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/dashboard_functions.php /srv/PiAP/pages/dashboard_functions.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/networking.php /srv/PiAP/pages/networking.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_login.php /srv/PiAP/pages/do_login.php
@@ -242,12 +244,13 @@ uninstall: uninstall-cgi uninstall-pages uninstall-scripts uninstall-styles
 	$(QUIET)$(ECHO) "$@: Done."
 
 purge: clean uninstall
-	$(QUIET)python3 -m pip uninstall piaplib
+	$(QUIET)python3 -m pip uninstall piaplib 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/index.php
 	$(QUIET)php -l webroot/PiAP/pages/index.php
+	$(QUIET)php -l webroot/PiAP/pages/dashboard.php
 	$(QUIET)php -l webroot/PiAP/pages/functions.php
 	$(QUIET)php -l webroot/PiAP/pages/dashboard_functions.php
 	$(QUIET)php -l webroot/PiAP/pages/networking.php
