@@ -85,155 +85,155 @@ install: install-webroot install-scripts install-styles install-pages install-cg
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-webroot: webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-cgi: install-webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/bin
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/client_status_table.bash /srv/webroot/PiAP/bin/client_status_table.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/compile_interface /srv/webroot/PiAP/bin/compile_interface
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/disk_status_table.bash /srv/webroot/PiAP/bin/disk_status_table.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/do_scan_the_air.bash /srv/webroot/PiAP/bin/do_scan_the_air.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/do_updatePiAP.bash /srv/webroot/PiAP/bin/do_updatePiAP.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/do_updateWiFi.bash /srv/webroot/PiAP/bin/do_updateWiFi.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/fw_status.bash /srv/webroot/PiAP/bin/fw_status.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/fw_status_table.bash /srv/webroot/PiAP/bin/fw_status_table.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_AP_heal.bash /srv/webroot/PiAP/bin/interface_AP_heal.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_list.bash /srv/webroot/PiAP/bin/interface_list.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_PHY_sleep.bash /srv/webroot/PiAP/bin/interface_PHY_sleep.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_status.bash /srv/webroot/PiAP/bin/interface_status.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/memory_status_table.bash /srv/webroot/PiAP/bin/memory_status_table.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/power_off.bash /srv/webroot/PiAP/bin/power_off.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/reboot.bash /srv/webroot/PiAP/bin/reboot.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/saltify.bash /srv/webroot/PiAP/bin/saltify.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/saltify.py /srv/webroot/PiAP/bin/saltify.py
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/scan_that_air.bash /srv/webroot/PiAP/bin/scan_that_air.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/scan_the_air.bash /srv/webroot/PiAP/bin/scan_the_air.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/service_AP_heal.bash /srv/webroot/PiAP/bin/service_AP_heal.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/temperature_status.bash /srv/webroot/PiAP/bin/temperature_status.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/updatePiAP.bash /srv/webroot/PiAP/bin/updatePiAP.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/updateWiFi.bash /srv/webroot/PiAP/bin/updateWiFi.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_list.bash /srv/webroot/PiAP/bin/user_list.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_status.bash /srv/webroot/PiAP/bin/user_status.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_status_table.bash /srv/webroot/PiAP/bin/user_status_table.bash
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/write_wpa_config.bash /srv/webroot/PiAP/bin/write_wpa_config.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/bin
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/client_status_table.bash /srv/PiAP/bin/client_status_table.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/compile_interface /srv/PiAP/bin/compile_interface
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/disk_status_table.bash /srv/PiAP/bin/disk_status_table.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/do_scan_the_air.bash /srv/PiAP/bin/do_scan_the_air.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/do_updatePiAP.bash /srv/PiAP/bin/do_updatePiAP.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/do_updateWiFi.bash /srv/PiAP/bin/do_updateWiFi.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/fw_status.bash /srv/PiAP/bin/fw_status.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/fw_status_table.bash /srv/PiAP/bin/fw_status_table.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_AP_heal.bash /srv/PiAP/bin/interface_AP_heal.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_list.bash /srv/PiAP/bin/interface_list.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_PHY_sleep.bash /srv/PiAP/bin/interface_PHY_sleep.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/interface_status.bash /srv/PiAP/bin/interface_status.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/memory_status_table.bash /srv/PiAP/bin/memory_status_table.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/power_off.bash /srv/PiAP/bin/power_off.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/reboot.bash /srv/PiAP/bin/reboot.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/saltify.bash /srv/PiAP/bin/saltify.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/saltify.py /srv/PiAP/bin/saltify.py
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/scan_that_air.bash /srv/PiAP/bin/scan_that_air.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/scan_the_air.bash /srv/PiAP/bin/scan_the_air.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/service_AP_heal.bash /srv/PiAP/bin/service_AP_heal.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/temperature_status.bash /srv/PiAP/bin/temperature_status.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/updatePiAP.bash /srv/PiAP/bin/updatePiAP.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/updateWiFi.bash /srv/PiAP/bin/updateWiFi.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_list.bash /srv/PiAP/bin/user_list.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_status.bash /srv/PiAP/bin/user_status.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_status_table.bash /srv/PiAP/bin/user_status_table.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/write_wpa_config.bash /srv/PiAP/bin/write_wpa_config.bash
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-cgi: must_be_root
-	$(QUIET)$(RMDIR) /srv/webroot/PiAP/bin 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/client_status_table.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/compile_interface 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/disk_status_table.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/do_scan_the_air.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/do_updatePiAP.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/do_updateWiFi.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/fw_status.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/fw_status_table.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/interface_AP_heal.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/interface_list.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/interface_PHY_sleep.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/interface_status.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/memory_status_table.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/power_off.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/reboot.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/saltify.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/saltify.py 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/saltify.pyc 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/scan_that_air.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/scan_the_air.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/service_AP_heal.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/temperature_status.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/updatePiAP.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/updateWiFi.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/user_list.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/user_status.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/user_status_table.bash 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/bin/write_wpa_config.bash 2>/dev/null || true
-	$(QUIET)$(RMDIR) /srv/webroot/PiAP/bin 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/PiAP/bin 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/client_status_table.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/compile_interface 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/disk_status_table.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/do_scan_the_air.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/do_updatePiAP.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/do_updateWiFi.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/fw_status.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/fw_status_table.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/interface_AP_heal.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/interface_list.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/interface_PHY_sleep.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/interface_status.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/memory_status_table.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/power_off.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/reboot.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/saltify.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/saltify.py 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/saltify.pyc 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/scan_that_air.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/scan_the_air.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/service_AP_heal.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/temperature_status.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/updatePiAP.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/updateWiFi.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/user_list.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/user_status.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/user_status_table.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/write_wpa_config.bash 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/PiAP/bin 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-scripts: install-webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/scripts
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/hashing.js /srv/webroot/PiAP/scripts/hashing.js
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/sha512.js /srv/webroot/PiAP/scripts/sha512.js
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/files
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/files/text
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/files/text/sha512.js.LICENSE /srv/webroot/PiAP/files/text/sha512.js.LICENSE
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/scripts
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/hashing.js /srv/PiAP/scripts/hashing.js
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/sha512.js /srv/PiAP/scripts/sha512.js
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files/text
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/files/text/sha512.js.LICENSE /srv/PiAP/files/text/sha512.js.LICENSE
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-scripts: must_be_root
-	$(QUIET)$(RM) /srv/webroot/PiAP/scripts/hashing.js 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/scripts/sha512.js 2>/dev/null || true
-	$(QUIET)$(RMDIR) /srv/webroot/PiAP/scripts 2>/dev/null || true
-	$(QUIET)$(RMDIR) /srv/webroot/PiAP/files/text 2>/dev/null || true
-	$(QUIET)$(RMDIR) /srv/webroot/PiAP/files/text/sha512.js.LICENSE 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/scripts/hashing.js 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/scripts/sha512.js 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/PiAP/scripts 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/PiAP/files/text 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/PiAP/files/text/sha512.js.LICENSE 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-styles: install-webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/styles
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/main.css /srv/webroot/PiAP/styles/main.css
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/grid.css /srv/webroot/PiAP/styles/grid.css
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/sign_in.css /srv/webroot/PiAP/styles/sign_in.css
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/styles
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/main.css /srv/PiAP/styles/main.css
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/grid.css /srv/PiAP/styles/grid.css
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/sign_in.css /srv/PiAP/styles/sign_in.css
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-styles: must_be_root
-	$(QUIET)$(RM) /srv/webroot/PiAP/styles/main.css 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/styles/grid.css 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/styles/sign_in.css 2>/dev/null || true
-	$(QUIET)$(RMDIR) /srv/webroot/PiAP/styles 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/styles/main.css 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/styles/grid.css 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/styles/sign_in.css 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/PiAP/styles 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-pages: install-webroot must_be_root
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/index.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/functions.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/dashboard_functions.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/networking.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/do_login.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/logout.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/wan_setup.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/lan_setup.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/session.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/do_wan_setup.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/do_lan_setup.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/paranoia.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/do_reboot.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/power_off.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/PiAP-config.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/PiAP-lan-setup.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/PiAP-wan-setup.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/error.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/profile.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/updates.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/do_piaplib_update.php 2>/dev/null || true
-	$(QUIET)$(RM) /srv/webroot/PiAP/pages/PiAP-updates.php 2>/dev/null || true
-	$(QUIET)$(RMDIR) /srv/webroot/PiAP/pages/ 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/index.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/functions.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/dashboard_functions.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/networking.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/do_login.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/logout.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/wan_setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/lan_setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/session.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/do_wan_setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/do_lan_setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/paranoia.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/do_reboot.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/power_off.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/PiAP-config.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/PiAP-lan-setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/PiAP-wan-setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/error.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/profile.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/updates.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/do_piaplib_update.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/PiAP-updates.php 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/PiAP/pages/ 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-pages: install-webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/index.php /srv/webroot/PiAP/index.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/pages/
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/index.php /srv/webroot/PiAP/pages/index.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/functions.php /srv/webroot/PiAP/pages/functions.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/dashboard_functions.php /srv/webroot/PiAP/pages/dashboard_functions.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/networking.php /srv/webroot/PiAP/pages/networking.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_login.php /srv/webroot/PiAP/pages/do_login.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/logout.php /srv/webroot/PiAP/pages/logout.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/wan_setup.php /srv/webroot/PiAP/pages/wan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/lan_setup.php /srv/webroot/PiAP/pages/lan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/session.php /srv/webroot/PiAP/pages/session.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_wan_setup.php /srv/webroot/PiAP/pages/do_wan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_lan_setup.php /srv/webroot/PiAP/pages/do_lan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/paranoia.php /srv/webroot/PiAP/pages/paranoia.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_reboot.php /srv/webroot/PiAP/pages/do_reboot.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/power_off.php /srv/webroot/PiAP/pages/power_off.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-config.php /srv/webroot/PiAP/pages/PiAP-config.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-lan-setup.php /srv/webroot/PiAP/pages/PiAP-lan-setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-wan-setup.php /srv/webroot/PiAP/pages/PiAP-wan-setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/error.php /srv/webroot/PiAP/pages/error.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/profile.php /srv/webroot/PiAP/pages/profile.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/updates.php /srv/webroot/PiAP/pages/updates.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_piaplib_update.php /srv/webroot/PiAP/pages/do_piaplib_update.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-updates.php /srv/webroot/PiAP/pages/PiAP-updates.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/index.php /srv/PiAP/index.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/pages/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/index.php /srv/PiAP/pages/index.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/functions.php /srv/PiAP/pages/functions.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/dashboard_functions.php /srv/PiAP/pages/dashboard_functions.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/networking.php /srv/PiAP/pages/networking.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_login.php /srv/PiAP/pages/do_login.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/logout.php /srv/PiAP/pages/logout.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/wan_setup.php /srv/PiAP/pages/wan_setup.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/lan_setup.php /srv/PiAP/pages/lan_setup.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/session.php /srv/PiAP/pages/session.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_wan_setup.php /srv/PiAP/pages/do_wan_setup.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_lan_setup.php /srv/PiAP/pages/do_lan_setup.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/paranoia.php /srv/PiAP/pages/paranoia.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_reboot.php /srv/PiAP/pages/do_reboot.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/power_off.php /srv/PiAP/pages/power_off.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-config.php /srv/PiAP/pages/PiAP-config.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-lan-setup.php /srv/PiAP/pages/PiAP-lan-setup.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-wan-setup.php /srv/PiAP/pages/PiAP-wan-setup.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/error.php /srv/PiAP/pages/error.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/profile.php /srv/PiAP/pages/profile.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/updates.php /srv/PiAP/pages/updates.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_piaplib_update.php /srv/PiAP/pages/do_piaplib_update.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-updates.php /srv/PiAP/pages/PiAP-updates.php
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall: uninstall-cgi uninstall-pages uninstall-scripts uninstall-styles
@@ -280,22 +280,22 @@ test-tox: cleanup
 	$(QUIET)$(ECHO) "$@: Done."
 
 cleanup:
-	$(QUIET)rm -f webroot/PiAP/pages/*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/styles/*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/scripts/*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/files/*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/cache/*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/bin/*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/bin/*.pyc 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/cache/* 2>/dev/null || true
-	$(QUIET)rm -f ./*~ 2>/dev/null || true
-	$(QUIET)rm -f webroot/PiAP/bin/*.pyc 2>/dev/null || true
-	$(QUIET)rm -f webroot/*.pyc 2>/dev/null || true
-	$(QUIET)rm -f *.DS_Store 2>/dev/null || true
-	$(QUIET)rm -f webroot/*.DS_Store 2>/dev/null || true
-	$(QUIET)rm -f webroot/*/*.DS_Store 2>/dev/null || true
-	$(QUIET)rm -Rf ./.tox/ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/pages/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/styles/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/scripts/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/files/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/cache/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/bin/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/bin/*.pyc 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/cache/* 2>/dev/null || true
+	$(QUIET)$(RM) ./*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/bin/*.pyc 2>/dev/null || true
+	$(QUIET)$(RM) webroot/*.pyc 2>/dev/null || true
+	$(QUIET)$(RM) *.DS_Store 2>/dev/null || true
+	$(QUIET)$(RM) webroot/*.DS_Store 2>/dev/null || true
+	$(QUIET)$(RM) webroot/*/*.DS_Store 2>/dev/null || true
+	$(QUIET)$(RMDIR) ./.tox/ 2>/dev/null || true
 
 clean: cleanup
 	$(QUIET)$(MAKE) -s -C ./docs/ -f Makefile clean 2>/dev/null || true
