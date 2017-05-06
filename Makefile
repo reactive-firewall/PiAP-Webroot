@@ -156,12 +156,17 @@ install-scripts: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/scripts
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/hashing.js /srv/webroot/PiAP/scripts/hashing.js
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/sha512.js /srv/webroot/PiAP/scripts/sha512.js
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/files
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/webroot/PiAP/files/text
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/files/text/sha512.js.LICENSE /srv/webroot/PiAP/files/text/sha512.js.LICENSE
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-scripts: must_be_root
 	$(QUIET)$(RM) /srv/webroot/PiAP/scripts/hashing.js 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/scripts/sha512.js 2>/dev/null || true
 	$(QUIET)$(RMDIR) /srv/webroot/PiAP/scripts 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/webroot/PiAP/files/text 2>/dev/null || true
+	$(QUIET)$(RMDIR) /srv/webroot/PiAP/files/text/sha512.js.LICENSE 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 install-styles: install-webroot must_be_root
@@ -198,6 +203,9 @@ uninstall-pages: install-webroot must_be_root
 	$(QUIET)$(RM) /srv/webroot/PiAP/pages/PiAP-wan-setup.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/pages/error.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/webroot/PiAP/pages/profile.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/webroot/PiAP/pages/updates.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/webroot/PiAP/pages/do_piaplib_update.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/webroot/PiAP/pages/PiAP-updates.php 2>/dev/null || true
 	$(QUIET)$(RMDIR) /srv/webroot/PiAP/pages/ 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
@@ -223,15 +231,18 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-wan-setup.php /srv/webroot/PiAP/pages/PiAP-wan-setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/error.php /srv/webroot/PiAP/pages/error.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/profile.php /srv/webroot/PiAP/pages/profile.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/updates.php /srv/webroot/PiAP/pages/updates.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_piaplib_update.php /srv/webroot/PiAP/pages/do_piaplib_update.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-updates.php /srv/webroot/PiAP/pages/PiAP-updates.php
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall: uninstall-cgi uninstall-pages uninstall-scripts uninstall-styles
-	$(QUITE)$(QUIET)python -m pip uninstall piaplib
+	$(QUITE)$(QUIET)python3 -m pip uninstall piaplib
 	$(QUITE) $(WAIT)
 	$(QUIET)$(ECHO) "$@: Done."
 
 purge: clean uninstall
-	$(QUIET)python -m pip uninstall piaplib
+	$(QUIET)python3 -m pip uninstall piaplib
 	$(QUIET)$(ECHO) "$@: Done."
 
 test: cleanup test-extras
@@ -255,6 +266,9 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/PiAP-wan-setup.php
 	$(QUIET)php -l webroot/PiAP/pages/error.php
 	$(QUIET)php -l webroot/PiAP/pages/profile.php
+	$(QUIET)php -l webroot/PiAP/pages/updates.php
+	$(QUIET)php -l webroot/PiAP/pages/do_piaplib_update.php
+	$(QUIET)php -l webroot/PiAP/pages/PiAP-updates.php
 	$(QUIET)$(ECHO) "$@: Done."
 
 test-extras:
@@ -288,7 +302,7 @@ clean: cleanup
 	$(QUIET)$(ECHO) "$@: Done."
 
 python-tools:
-	$(QUIET)python -m pip install "git+https://github.com/reactive-firewall/PiAP-python-tools.git"
+	$(QUIET)python3 -m pip install --upgrade "git+https://github.com/reactive-firewall/PiAP-python-tools.git"
 
 must_be_root:
 	runner=`whoami` ; \
