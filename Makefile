@@ -57,7 +57,7 @@ ifeq "$(INSTALL)" ""
 		INST_OPTS=-m 750
 	endif
 	ifeq "$(INST_FILE_OPTS)" ""
-		INST_OPTS=-m 640
+		INST_FILE_OPS=-m 640
 	endif
 	ifeq "$(INST_DIR_OPTS)" ""
 		INST_DIR_OPTS=-m 750 -d
