@@ -46,6 +46,12 @@ function has_downloaded_x509_check() {
 					</div>
 					</li>
 					<li class="dropdown">
+						<a href="javascript:void(0)" class="dropbtn">Command Center</a>
+						<div class="dropdown-content">
+							<a href="/pages/updates.php">Updates</a>
+						</div>
+					</li>
+					<li class="dropdown">
 						<a href="javascript:void(0)" class="dropbtn">Power</a>
 						<div class="dropdown-content">
 							<a href="/pages/do_reboot.php">Reboot</a>
