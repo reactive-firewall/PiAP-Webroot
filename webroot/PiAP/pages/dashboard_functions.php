@@ -113,6 +113,7 @@ function user_list() {
 
 function user_status() {
 		exec(sprintf('python3 -m piaplib.pocket lint check users --all --html'), $res, $rval);;
+		$blob = "";;
 		if ($rval === 0) {
 			for ($num = 0; $num < count($res) ; $num++) {
 				$blob .= "" . $res[$num] . "\n";;
