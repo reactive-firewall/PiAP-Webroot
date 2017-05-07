@@ -174,12 +174,14 @@ install-styles: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/main.css /srv/PiAP/styles/main.css
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/grid.css /srv/PiAP/styles/grid.css
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/sign_in.css /srv/PiAP/styles/sign_in.css
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/form_config.css /srv/PiAP/styles/form_config.css
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-styles: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/styles/main.css 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/styles/grid.css 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/styles/sign_in.css 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/styles/form_config.css 2>/dev/null || true
 	$(QUIET)$(RMDIR) /srv/PiAP/styles 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
