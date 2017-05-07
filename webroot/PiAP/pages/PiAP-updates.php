@@ -3,7 +3,7 @@ include_once 'PiAP-config.php';
 include_once 'functions.php';
 
 function updatePiAP() {
-	exec(sprintf('python3 -m piaplib.pocket pku upgrade --all || false ;'), $res, $rval);;
+	exec(sprintf('python3 -m piaplib.pocket pku upgrade --upgrade-all || false ;'), $res, $rval);;
 	if ($rval === 0) {
 		return true ;;
 	} else {
