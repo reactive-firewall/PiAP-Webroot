@@ -21,6 +21,7 @@ function xerror_tagline() {
 		<meta name="description" content="PiAP Error">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/grid.css"/>
     </head>
     <body>
 	<div id="error_page" class="container">

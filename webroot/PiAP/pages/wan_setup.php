@@ -1,5 +1,5 @@
 <?php
-include 'session.php';
+include_once 'session.php';
 include_once 'networking.php';
 
 ?>
@@ -13,7 +13,7 @@ include_once 'networking.php';
 		<meta name="author" content="PiAP">
 		<!-- RFC2318 defines text/css -->
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
-		<link rel="stylesheet" type="text/css" href="/styles/sign_in.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/styles/form_config.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/styles/grid.css" media="screen"/>
 		<!-- RFC4329 defines application/javascript -->
 	</head>
