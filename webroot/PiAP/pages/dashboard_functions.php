@@ -76,11 +76,11 @@ function disk_status() {
 function temperature_status() {
 	exec(sprintf('../bin/temperature_status.bash'), $res, $rval);;
 	if ($rval === 0) {
-		$blob = "<p>";
+		$blob = "<div id=\"temperature_box\">";
 		for ($num = 0; $num < count($res) ; $num++) {
-			$blob .= xssafe($res[$num]) . "\n";
+			$blob .= $res[$num] . "\n";
 		};
-		$blob .= "</p>";
+		$blob .= "</div>";
 		return $blob ;;
 	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
