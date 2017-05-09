@@ -102,7 +102,7 @@ function firewall_status() {
 }
 
 function user_list() {
-	exec(sprintf('python3 -m piaplib.pocket lint check users --list'), $res, $rval);;
+	exec(sprintf('python3 -m piaplib.pocket lint check users --list 2>/dev/null ;'), $res, $rval);;
 	if ($rval === 0) {
 		return $res;;
 	}
@@ -112,7 +112,7 @@ function user_list() {
 }
 
 function user_status() {
-	exec(sprintf('python3 -m piaplib.pocket lint check users --all --html'), $res, $rval);;
+	exec(sprintf('python3 -m piaplib.pocket lint check users --all --html 2>/dev/null ;'), $res, $rval);;
 	if ($rval === 0) {
 		$blob = "<div class=\"row\">";;
 		for ($num = 0; $num < count($res) ; $num++) {

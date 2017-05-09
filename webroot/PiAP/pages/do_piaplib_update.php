@@ -14,7 +14,7 @@ if (login_check() != true) {
 else {
 	if (updatePiAP() === true) {
 		// configure success
-		header("Location: /pages/updates.php?update_success=1");
+		header("Location: /pages/updates.php?update_done=1");
 		exit();
 	} else {
 		// configure failed

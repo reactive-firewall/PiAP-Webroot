@@ -57,7 +57,7 @@ include_once 'networking.php';
 				<div class="row">
 					<?php
 							if (isset($_GET['update_error'])) {
-								echo '<div id="error_alert" class="alert-error"><div class="txt-alert"><strong>Error!</strong> Configuration update failed. Please <a href=\"https://github.com/reactive-firewall/PiAP-Webroot/issues">report this issue.</a></div></div>';
+								echo '<div id="error_alert" class="alert-error"><div class="txt-alert"><strong>Error!</strong> Configuration update failed. Please <a href="https://github.com/reactive-firewall/PiAP-Webroot/issues">report this issue.</a></div></div>';
 							}
 							else {
 								if (isset($_GET['update_done'])) {
