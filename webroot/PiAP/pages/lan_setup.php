@@ -1,6 +1,6 @@
 <?php
 
-include 'session.php';
+include_once 'session.php';
 include_once 'functions.php';
 include_once 'networking.php';
 
@@ -14,7 +14,7 @@ include_once 'networking.php';
 		<meta name="description" content="PiAP Setup">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
-		<link rel="stylesheet" type="text/css" href="/styles/sign_in.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/styles/form_config.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/styles/grid.css" media="screen"/>
 		<!-- RFC4329 defines application/javascript -->
 	</head>
@@ -36,6 +36,12 @@ include_once 'networking.php';
 						<a href="/pages/wan_setup.php">Wan Setup</a>
 						<a href="/pages/profile.php">User Setup</a>
 					</div>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:void(0)" class="dropbtn">Command Center</a>
+						<div class="dropdown-content">
+							<a href="/pages/updates.php">Updates</a>
+						</div>
 					</li>
 					<li class="dropdown">
 					<a href="javascript:void(0)" class="dropbtn">Power</a>

@@ -15,7 +15,7 @@
 #    NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF
 #    MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE,
 #    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. 
-#    
+#
 # C. THE AUTHOR OF PIAP DOES NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE
 #    THE AUTHOR OF PIAP SOFTWARE AND SERVICES, THAT THE FUNCTIONS CONTAINED IN, OR
 #    SERVICES PERFORMED OR PROVIDED BY, THIS SHELL SCRIPT WILL MEET YOUR
@@ -59,9 +59,9 @@
 #    the amount of five dollars ($5.00). The foregoing limitations will apply
 #    even if the above stated remedy fails of its essential purpose.
 ################################################################################
-ulimit -t 5
+ulimit -t 16
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
-sudo /srv/PiAP/bin/fw_status.bash 2>/dev/null || exit 1 ;
-EXIT_CODE=$? ; sudo -k wait ;
+sudo /srv/PiAP/bin/client_status_table.bash 2>/dev/null || true
+EXIT_CODE=$? ; sudo -k ; wait ;
 exit ${EXIT_CODE:-3} ;

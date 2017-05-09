@@ -1,9 +1,10 @@
 <?php
 include_once 'PiAP-config.php';
+include_once 'paranoia.php';
 include_once 'functions.php';
 
 function client_list() {
-	exec(sprintf('../bin/client_status_table.bash'), $res, $rval);;
+	exec(sprintf('../bin/client_status.bash'), $res, $rval);;
 	if ($rval === 0) {
 		$blob = "<div class=\"row\">";
 		for ($num = 0; $num < count($res) ; $num++) {
@@ -45,7 +46,7 @@ function interface_list() {
 
 function interface_status() {
 	$blob = "";
-	exec(sprintf('python3 -m piaplib.pocket lint check users --all --html ;'), $res, $rval);;
+	exec(sprintf('python3 -m piaplib.pocket lint check iface --all --html ;'), $res, $rval);;
 	if ($rval === 0) {
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= "" . $res[$num] . "\n";;

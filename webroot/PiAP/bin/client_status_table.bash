@@ -59,8 +59,9 @@
 #    the amount of five dollars ($5.00). The foregoing limitations will apply
 #    even if the above stated remedy fails of its essential purpose.
 ################################################################################
-ulimit -t 5
+ulimit -t 15
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
-sudo -u www-data -g netdev python3 -m piaplib.pocket lint check clients --all --html ; EXIT_CODE=$? ; sudo -k ; wait ;
+sudo -u www-data -g netdev python3 -m piaplib.pocket lint check clients --all --html
+EXIT_CODE=$? ; sudo -k ; wait ;
 exit ${EXIT_CODE:-3} ;

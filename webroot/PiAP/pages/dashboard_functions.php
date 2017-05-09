@@ -76,11 +76,11 @@ function disk_status() {
 function temperature_status() {
 	exec(sprintf('../bin/temperature_status.bash'), $res, $rval);;
 	if ($rval === 0) {
-		$blob = "<p>";
+		$blob = "<div id=\"temperature_box\">";
 		for ($num = 0; $num < count($res) ; $num++) {
-			$blob .= xssafe($res[$num]) . "\n";
+			$blob .= $res[$num] . "\n";
 		};
-		$blob .= "</p>";
+		$blob .= "</div>";
 		return $blob ;;
 	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
@@ -102,7 +102,7 @@ function firewall_status() {
 }
 
 function user_list() {
-	exec(sprintf('python3 -m piaplib.pocket lint check users --list'), $res, $rval);;
+	exec(sprintf('python3 -m piaplib.pocket lint check users --list 2>/dev/null ;'), $res, $rval);;
 	if ($rval === 0) {
 		return $res;;
 	}
@@ -112,14 +112,16 @@ function user_list() {
 }
 
 function user_status() {
-		exec(sprintf('python3 -m piaplib.pocket lint check users --all --html', strip_input($user_name)), $res, $rval);;
-		if ($rval === 0) {
-			for ($num = 0; $num < count($res) ; $num++) {
-				$blob .= "" . $res[$num] . "\n";;
-			};
-		} else {
-			return tool_error_msg("Server error. (tool_bug) 500");
-		}
-	return $blob;;
+	exec(sprintf('python3 -m piaplib.pocket lint check users --all --html 2>/dev/null ;'), $res, $rval);;
+	if ($rval === 0) {
+		$blob = "<div class=\"row\">";;
+		for ($num = 0; $num < count($res) ; $num++) {
+			$blob .= $res[$num] . "\n";;
+		};
+		$blob .= "</div>";;
+		return $blob ;;
+	} else {
+		return tool_error_msg("Server error. (tool_bug) 500");
+	}
 }
 

@@ -22,7 +22,7 @@ function has_downloaded_x509_check() {
 		<meta name="description" content="PiAP Setup">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
-		<link rel="stylesheet" type="text/css" href="/styles/sign_in.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/styles/form_config.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/styles/grid.css" media="screen"/>
 		<!-- RFC4329 defines application/javascript -->
 	</head>
@@ -44,6 +44,12 @@ function has_downloaded_x509_check() {
 						<a href="/pages/wan_setup.php">Wan Setup</a>
 						<a href="#">User Setup</a>
 					</div>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:void(0)" class="dropbtn">Command Center</a>
+						<div class="dropdown-content">
+							<a href="/pages/updates.php">Updates</a>
+						</div>
 					</li>
 					<li class="dropdown">
 						<a href="javascript:void(0)" class="dropbtn">Power</a>
