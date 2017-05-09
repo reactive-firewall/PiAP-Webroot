@@ -112,15 +112,16 @@ function user_list() {
 }
 
 function user_status() {
-		exec(sprintf('python3 -m piaplib.pocket lint check users --all --html'), $res, $rval);;
-		$blob = "";;
-		if ($rval === 0) {
-			for ($num = 0; $num < count($res) ; $num++) {
-				$blob .= "" . $res[$num] . "\n";;
-			};
-		} else {
-			return tool_error_msg("Server error. (tool_bug) 500");
-		}
-	return $blob;;
+	exec(sprintf('python3 -m piaplib.pocket lint check users --all --html'), $res, $rval);;
+	if ($rval === 0) {
+		$blob = "<div class=\"row\">";;
+		for ($num = 0; $num < count($res) ; $num++) {
+			$blob .= $res[$num] . "\n";;
+		};
+		$blob .= "</div>";;
+		return $blob ;;
+	} else {
+		return tool_error_msg("Server error. (tool_bug) 500");
+	}
 }
 
