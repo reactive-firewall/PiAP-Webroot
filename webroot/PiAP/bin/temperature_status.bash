@@ -63,6 +63,6 @@ ulimit -t 30
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/sbin"
 echo "<div class=\"row\" id=\"temp_report\">" ;
-echo -n $(/usr/local/sbin/check_rpi_temp | cut -d \| -f 1 2>/dev/null | sed -E -e 's/(^\s*|[^-0-9.]+){1}([1-9]{1}[0-9]*){1}(\s+){1}/\1<span class=\"label label-warning\">\2<\/span>\3/g' | sed -E -e 's/(^\s*|[^-0-9.]+){1}([1-9]+[0-9]+){1}(\s+){1}/\1<span class=\"label label-danger\">\2<\/span>\3/g' | sed -E -e 's/^(\s*){1}([0-1]+|No){1}(\s+){1}/\1<span class=\"label label-success\">\2<\/span>\3/g' | sed -E -e 's/([^0-9]|\s*){1}([0]+){1}(\s+){1}/\1<span class=\"label label-success\">\2<\/span>\3/g' 2>/dev/null | sed -E -e 's/\(/<i>/g' | sed -E -e 's/\)/<\/i>/g' | sed -E -e 's/^(.+){1}$/<p>&<\/p>/g' ; wait ;
+echo -n $(/usr/local/sbin/check_rpi_temp | cut -d \| -f 1 2>/dev/null ) | sed -E -e 's/(^\s*|[^-0-9.]+){1}([4]{1}[1-9]*){1}(\s+){1}/\1<span class=\"label label-warning\">\2<\/span>\3/g' | sed -E -e 's/(^\s*|[^-0-9.]+){1}([5-9]+[0-9]+){1}(\s+){1}/\1<span class=\"label label-danger\">\2<\/span>\3/g' | sed -E -e 's/^(\s*){1}([0-4]+[0-9]*|No){1}(\s+){1}/\1<span class=\"label label-success\">\2<\/span>\3/g' | sed -E -e 's/([^0-9]|\s*){1}([0]+){1}(\s+){1}/\1<span class=\"label label-success\">\2<\/span>\3/g' 2>/dev/null | sed -E -e 's/\(/<i>/g' | sed -E -e 's/\)/<\/i>/g' | sed -E -e 's/^(.+){1}$/<p>&<\/p>/g' ; wait ;
 echo "</div>" ;
 exit 0 ;
