@@ -62,4 +62,5 @@
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 sudo /sbin/shutdown -hP 1 "PiAP will SHUTDOWN" 2>/dev/null & disown 2>/dev/null >/dev/null ;
-exit ${EXIT_CODE:-3} ;
+sudo -k ;
+exit 0 ;

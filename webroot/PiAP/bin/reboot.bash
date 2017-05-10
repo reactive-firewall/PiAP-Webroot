@@ -62,4 +62,5 @@
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 sudo /sbin/shutdown -r 1 "PiAP WILL REBOOT" & disown 2>/dev/null >/dev/null ;
-exit ${EXIT_CODE:-3} ;
+sudo -k
+exit 0 ;
