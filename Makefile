@@ -175,6 +175,10 @@ install-styles: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/grid.css /srv/PiAP/styles/grid.css
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/sign_in.css /srv/PiAP/styles/sign_in.css
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/form_config.css /srv/PiAP/styles/form_config.css
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/loaders.min.css /srv/PiAP/styles/loaders.min.css
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files || true
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files/text || true
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/files/text/loader.min.css.LICENSE /srv/PiAP/files/text/loader.min.css.LICENSE || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-styles: must_be_root
@@ -182,6 +186,8 @@ uninstall-styles: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/styles/grid.css 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/styles/sign_in.css 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/styles/form_config.css 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/styles/loaders.min.css 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/files/text/loader.min.css.LICENSE 2>/dev/null || true
 	$(QUIET)$(RMDIR) /srv/PiAP/styles 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
@@ -193,6 +199,7 @@ uninstall-pages: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/pages/networking.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/do_login.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/logout.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/landing.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/wan_setup.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/lan_setup.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/session.php 2>/dev/null || true
@@ -222,6 +229,7 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/networking.php /srv/PiAP/pages/networking.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_login.php /srv/PiAP/pages/do_login.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/logout.php /srv/PiAP/pages/logout.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/landing.php /srv/PiAP/pages/landing.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/wan_setup.php /srv/PiAP/pages/wan_setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/lan_setup.php /srv/PiAP/pages/lan_setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/session.php /srv/PiAP/pages/session.php
@@ -258,6 +266,7 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/networking.php
 	$(QUIET)php -l webroot/PiAP/pages/do_login.php
 	$(QUIET)php -l webroot/PiAP/pages/logout.php
+	$(QUIET)php -l webroot/PiAP/pages/landing.php
 	$(QUIET)php -l webroot/PiAP/pages/session.php
 	$(QUIET)php -l webroot/PiAP/pages/lan_setup.php
 	$(QUIET)php -l webroot/PiAP/pages/wan_setup.php
