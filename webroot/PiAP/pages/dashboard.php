@@ -98,7 +98,7 @@ include_once 'dashboard_functions.php';
 						<a name="clients"><h3>Clients</h3></a>
 					</div>
 					<div class="panel-content">
-						<?php echo  client_list() ;; ?>
+						<?php echo client_list() ;; ?>
 					</div>
 				</div>
 			</div>

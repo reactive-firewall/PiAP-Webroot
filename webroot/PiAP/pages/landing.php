@@ -56,7 +56,11 @@ include_once 'networking.php';
 		</nav>
 		<div class="container">
 			<div class="row">
-				<div class="loader-inner ball-pulse"></div>
+				<div class="loader">
+					<div class="loader-inner ball-scale">
+        			  <div></div>
+					</div>
+				</div>
 			</div>
 		<?php endif; ?>
 		</div> <!-- /container -->
