@@ -6,7 +6,7 @@ include_once 'functions.php';
 function uptime_status() {
 	exec(sprintf('uptime -p'), $res, $rval);;
 	if ($rval === 0) {
-		$blob = "<p>PiAP have has been ";
+		$blob = "<p>PiAP has been ";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= xssafe($res[$num]) . "\n";
 		};

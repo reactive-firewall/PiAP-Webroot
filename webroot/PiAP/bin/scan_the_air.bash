@@ -70,6 +70,7 @@ eval $(fgrep "USE_HTML=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 
 if [[ !( -f $SWAP_SCAN_FILE) ]] ; then
 	iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan last | fgrep -v "IE: Unknown:" >"${SWAP_SCAN_FILE}"
+	chown www-data:www-data "${SWAP_SCAN_FILE}"
 fi
 
 MY_SSID_DATA=$(iwconfig wlan0 2>/dev/null)

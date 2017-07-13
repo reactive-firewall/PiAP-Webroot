@@ -11,7 +11,7 @@ if (isset($_POST['username'], $_POST['p'])) {
 
 	if (login($username, $passphrase) === true) {
 		// Login success
-		header("Location: /pages/dashboard.php");
+		header("Location: /pages/landing.php");
 		exit();
 	} else {
 		// Login failed
