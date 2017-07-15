@@ -55,7 +55,7 @@ include_once 'networking.php';
 			</ul>
 		</nav>
 		<div class="container">
-			<div class="row">
+			<div class="loading-row">
 				<div class="loader">
 					<div class="loader-inner ball-scale">
         			  <div></div>
