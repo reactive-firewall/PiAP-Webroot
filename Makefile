@@ -80,7 +80,7 @@ build:
 init:
 	$(QUIET)$(ECHO) "$@: Done."
 
-install: install-webroot install-scripts install-styles install-pages install-cgi install-images python-tools must_be_root
+install: install-webroot install-scripts install-styles install-pages install-cgi python-tools must_be_root
 	$(QUITE) $(WAIT)
 	$(QUIET)$(ECHO) "$@: Done."
 
@@ -248,27 +248,7 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-updates.php /srv/PiAP/pages/PiAP-updates.php
 	$(QUIET)$(ECHO) "$@: Done."
 
-install-images: install-webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/images
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo.svg /srv/PiAP/images/logo.svg
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo.png /srv/PiAP/images/logo.png
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/faveicon.ico /srv/PiAP/images/faveicon.ico
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/faveicon.ico /srv/PiAP/faveicon.ico
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo_bright.svg /srv/PiAP/images/logo_bright.svg
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/transparent.gif /srv/PiAP/images/transparent.gif
-	$(QUIET)$(ECHO) "$@: Done."
-
-uninstall-images: must_be_root
-	$(QUIET)$(RM) /srv/PiAP/faveicon.ico 2>/dev/null || true
-	$(QUIET)$(RM) /srv/PiAP/images/faveicon.ico 2>/dev/null || true
-	$(QUIET)$(RM) /srv/PiAP/images/logo.svg 2>/dev/null || true
-	$(QUIET)$(RM) /srv/PiAP/images/logo.png 2>/dev/null || true
-	$(QUIET)$(RM) /srv/PiAP/images/logo_bright.svg 2>/dev/null || true
-	$(QUIET)$(RM) /srv/PiAP/images/transparent.gif 2>/dev/null || true
-	$(QUIET)$(RMDIR) /srv/PiAP/images 2>/dev/null || true
-	$(QUIET)$(ECHO) "$@: Done."
-
-uninstall: uninstall-cgi uninstall-pages uninstall-scripts uninstall-styles uninstall-images
+uninstall: uninstall-cgi uninstall-pages uninstall-scripts uninstall-styles
 	$(QUITE)$(QUIET)python3 -m pip uninstall -y piaplib 2>/dev/null || true
 	$(QUITE) $(WAIT)
 	$(QUIET)$(ECHO) "$@: Done."
