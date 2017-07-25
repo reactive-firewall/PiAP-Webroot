@@ -18,9 +18,6 @@ if (login_check() === true) {
         <meta name="description" content="Please Login">
         <meta name="author" content="PiAP">
         <title>PiAP Login</title>
-        <meta name="expected-hostname" content="pocket.PiAP.local">
-		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
-		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
         <!-- RFC2318 defines text/css -->
         <link rel="stylesheet" type="text/css" href="/styles/main.css" media="screen"/>
         <link rel="stylesheet" type="text/css" href="/styles/sign_in.css" media="screen"/>
