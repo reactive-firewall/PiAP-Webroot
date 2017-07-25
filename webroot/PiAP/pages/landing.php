@@ -10,6 +10,9 @@ include_once 'networking.php';
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>loading...</title>
+		<meta name="expected-hostname" content="pocket.PiAP.local">
+		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
+		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
 		<meta name="description" content="PiAP is Loading">
 		<meta name="author" content="PiAP">
 		<!-- RFC2318 defines text/css -->
@@ -55,7 +58,7 @@ include_once 'networking.php';
 			</ul>
 		</nav>
 		<div class="container">
-			<div class="row">
+			<div class="loading-row">
 				<div class="loader">
 					<div class="loader-inner ball-scale">
         			  <div></div>

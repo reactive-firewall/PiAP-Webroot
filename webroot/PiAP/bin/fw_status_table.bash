@@ -63,5 +63,5 @@ ulimit -t 5
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 sudo /srv/PiAP/bin/fw_status.bash 2>/dev/null || exit 1 ;
-EXIT_CODE=$? ; sudo -k wait ;
+EXIT_CODE=$? ; sudo -k ; wait ;
 exit ${EXIT_CODE:-3} ;

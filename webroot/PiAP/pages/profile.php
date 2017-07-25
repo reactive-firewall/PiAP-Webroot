@@ -19,6 +19,9 @@ function has_downloaded_x509_check() {
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>PiAP Setup</title>
+		<meta name="expected-hostname" content="pocket.PiAP.local">
+		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
+		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
 		<meta name="description" content="PiAP Setup">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />

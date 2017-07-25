@@ -1,0 +1,14 @@
+<svg width="320" height="320">
+ <g>
+  <title>PiAP</title>
+  <g id="Logo">
+   <text transform="translate(138.16, 488.52) scale(1, 1.29809) translate(-138.16, -488.52) translate(138.16, 87.2603) scale(1, 1.00501) translate(-138.16, -87.2603) translate(138.16, 88.4797) scale(1, 1.11946) translate(-138.16, -88.4797) matrix(4.29606, 0, 0, 11.6164, -706.032, -2355.37)" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="text_P" y="230.041483" x="172.292567" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="pink" fill="deeppink">P</text>
+   <text transform="matrix(5.8469, 0, 0, 5.8469, -345.085, -1271.35)" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="text_i" y="268.918227" x="72.174986" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="pink" fill="deeppink">i</text>
+   <path id="pifi_band_3" d="m100,150c50,-100 150,-100 205,0c50" fill-opacity="null" stroke-opacity="null" stroke-width="4" stroke="deeppink" fill="none"/>
+   <path id="pifi_band_2" d="m125,160c25,-75 125,-75 160,0c25" fill-opacity="null" stroke-opacity="null" stroke-width="4" stroke="deeppink" fill="none"/>
+   <path id="pifi_band_1" d="m150,175c15,-50 100,-50 112.5,0c15" fill-opacity="null" stroke-opacity="null" stroke-width="4" stroke="deeppink" fill="none"/>
+   <text transform="matrix(3.25883, 0, 0, 7.18623, -860, -1605)" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="text_AP" y="264.884009" x="310.103896" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="pink" fill="deeppink">AP</text>
+  </g>
+ </g>
+ PiAP
+</svg>

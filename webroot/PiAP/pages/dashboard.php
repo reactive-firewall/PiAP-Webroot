@@ -11,6 +11,9 @@ include_once 'dashboard_functions.php';
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>PiAP Dashboard</title>
+		<meta name="expected-hostname" content="pocket.PiAP.local">
+		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
+		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
 		<meta name="description" content="PiAP Dashboard">
 		<meta name="author" content="PiAP">
 		<!-- RFC2318 defines text/css -->
