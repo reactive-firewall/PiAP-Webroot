@@ -83,7 +83,7 @@ echo -n "<table class=\"table table-striped\">"
 echo -n "<thead><tr><th>ESSID</th><th>MAC</th><th>Security</th><th>RF Band</th><th>Signal</th><th>Group Cipher</th><th>Pairwise Cipher</th></tr></thead><tbody>"
 fi
 
-for AP_ADDR in $(fgrep -v "IE: Unknown:" "${SWAP_SCAN_FILE}" | fgrep "Cell" | tr -s ' ' ' ' | cut -d \  -f 6 ) ; do
+for AP_ADDR in $(fgrep -v "IE: Unknown:" "${SWAP_SCAN_FILE}" | fgrep "Cell" | tr -s ' ' ' ' | cut -d \  -f 6 | sort -t\: -n | uniq ) ; do
 if [[ ( $USE_HTML -le 0 ) ]] ; then
 COL_DELIM=" - "
 else
