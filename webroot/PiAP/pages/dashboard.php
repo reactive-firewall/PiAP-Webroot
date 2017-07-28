@@ -90,7 +90,7 @@ include_once 'dashboard_functions.php';
 					<div class="panel-heading">
 						<a name="Firewall"><h3>Firewall</h3></a>
 					</div>
-					<div class="panel-content">
+					<div class="panel-content panel-scroll-short">
 						<?php echo firewall_status() ;; ?>
 					</div>
 				</div>
