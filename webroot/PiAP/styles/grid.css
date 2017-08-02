@@ -256,6 +256,21 @@ pre.box {
   overflow: auto;
 }
 
+.panel-scroll-short {
+  max-height: 330px;
+  overflow: auto;
+}
+
+.panel-scroll-long {
+  max-height: 660px;
+  overflow: auto;
+}
+
+.panel-scroll-rare {
+  max-height: 1000px;
+  overflow: auto;
+}
+
 /* TABLES */
 
 .table {

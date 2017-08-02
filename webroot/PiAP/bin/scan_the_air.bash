@@ -83,7 +83,7 @@ echo -n "<table class=\"table table-striped\">"
 echo -n "<thead><tr><th>ESSID</th><th>MAC</th><th>Security</th><th>RF Band</th><th>Signal</th></tr></thead><tbody>"
 fi
 
-for AP_ADDR in $(fgrep -v "IE: Unknown:" "${SWAP_SCAN_FILE}" | fgrep "Cell" | tr -s ' ' ' ' | cut -d \  -f 6 ) ; do
+for AP_ADDR in $(fgrep -v "IE: Unknown:" "${SWAP_SCAN_FILE}" | fgrep "Cell" | tr -s ' ' ' ' | cut -d \  -f 6 | sort -t\: -n | uniq ) ; do
 
 AP_KNOWN_NAME=$(printf "$MY_SSID_DATA" 2>/dev/null | fgrep --before-context=1 "${AP_ADDR}" 2>/dev/null | fgrep "SSID:" 2>/dev/null | cut -d: -f 2 2>/dev/null )
 

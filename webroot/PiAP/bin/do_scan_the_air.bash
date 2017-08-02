@@ -75,7 +75,7 @@ if [[ ( -f $SWAP_SCAN_FILE ) ]] && [[ ( $(fgrep --count "Cell" $SWAP_SCAN_FILE |
 
 iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan last 2>/dev/null >/dev/null || true ; wait ;
 chown www-data:www-data "${SWAP_SCAN_FILE}"
-sleep 0.5s
+sleep 0.1s
 sudo iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan 2>/dev/null >/dev/null || true ; wait ;
 chown www-data:www-data "${SWAP_SCAN_FILE}"
 sleep 0.2s
