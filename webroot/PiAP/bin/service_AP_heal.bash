@@ -85,7 +85,8 @@ eval $(fgrep "USE_HTML=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 
 #ip addr | grep -oE '\s[aehltw]{3}[n]?[0-9]+[:]{1}' | grep -oE '[aehltw]{3}[n]?[0-9]+' | sort | uniq ;
 WAN_IFACE="${DEFAULT_WAN_IFACE:-wlan0}"
-LAN_IFACE="${DEFAULT_LAN_IFACE:-wlan1}"
+LAN_IFACE="${DEFAULT_LAN_IFACE:-lan1}"
+LAN_IS_BRIDGED="${LAN_IS_BRIDGED:-1}"
 CLEAN_UP=0;
 
 if [[ ( -n $(pgrep dnsmasq 2>/dev/null) ) ]] && [[ ( -n $(pgrep hostapd 2>/dev/null) ) ]] ; then
@@ -95,6 +96,12 @@ else
 	/srv/PiAP/bin/interface_AP_heal.bash ${WAN_IFACE} ;
 	sleep 0.5
 	/srv/PiAP/bin/interface_AP_heal.bash ${LAN_IFACE} ;
+	if [[ ( $LAN_IS_BRIDGED -gt 0 ) ]] ; then
+		for SUB_LAN_IFACE in $(brctl show ${LAN_IFACE} 2>/dev/null | column -t | tr -s \\t ' ' | cut -d\  -f 4 | tail -n +2 ) ; do
+			/srv/PiAP/bin/interface_AP_heal.bash ${SUB_LAN_IFACE} ;
+			sleep 0.5
+		done
+	fi
 	sleep 1
 	/usr/sbin/service dnsmasq restart || exit $? ;
 	CLEAN_UP=1;
@@ -108,6 +115,15 @@ if [[ ( ${CLEAN_UP:-0} -gt 0 ) ]] || [[ ( -z $(ping -nc 1 -s ${DATA_SIZE:-55} $(
 	sleep 1
 	ulimit -t 3300
 	prep_dns_cache 2>/dev/null >/dev/null ; EXIT_CODE=$? ; wait ;
+fi
+
+if [[ ( $( ntpq -np | tr -s ' ' | cut -d\  -f 8 | tail -n +3 | fgrep -v 0 | wc -l ) -le 0 ) ]] ; then 
+	/etc/cron.hourly/ntp_opengate ;
+	service ntp restart 2>/dev/null ;
+	sleep 1;
+	/etc/cron.hourly/ntp_opengate ;
+	sleep 1 
+	/etc/cron.hourly/ntp_opengate ;
 fi
 
 rm -f ${LOCK_FILE} >/dev/null || true ; wait ;

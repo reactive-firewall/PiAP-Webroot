@@ -305,7 +305,7 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/PiAP-updates.php
 	$(QUIET)$(ECHO) "$@: Done."
 
-test-extras:
+test-extras: cleanup
 	$(QUIET)flake8 --ignore=W191,W391 --max-line-length=100 --count webroot/PiAP/bin/saltify.py || true
 	$(QUIET)$(ECHO) "$@: Done."
 	
@@ -336,7 +336,10 @@ clean: cleanup
 	$(QUIET)$(ECHO) "$@: Done."
 
 python-tools:
-	$(QUIET)python3 -m pip install --upgrade "git+https://github.com/reactive-firewall/PiAP-python-tools.git"
+	$(QUIET)$(ECHO) "$@: Upgrading python tools."
+	$(QUIET)python3 -m pip install --upgrade "git+https://github.com/reactive-firewall/PiAP-python-tools.git@stable#egg=piaplib" 2>/dev/null || true
+	$(QUIET)python -m pip install --upgrade "git+https://github.com/reactive-firewall/PiAP-python-tools.git@stable#egg=piaplib" 2>/dev/null || true
+	$(QUIET)$(ECHO) "$@: Done."
 
 must_be_root:
 	runner=`whoami` ; \
