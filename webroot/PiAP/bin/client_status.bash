@@ -62,6 +62,6 @@
 ulimit -t 16
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
-/srv/PiAP/bin/client_status_table.bash 2>/dev/null || true
+sudo /srv/PiAP/bin/client_status_table.bash 2>/dev/null || true
 EXIT_CODE=$? ; sudo -k ; wait ;
 exit ${EXIT_CODE:-3} ;

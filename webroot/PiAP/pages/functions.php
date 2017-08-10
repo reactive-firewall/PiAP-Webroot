@@ -56,14 +56,15 @@ function http_method()
 
 
 function tool_error_msg($the_error_msg) {
-	$temp_error = '<div class=\"alert-error\"><div class=\"txt-alert\"><strong>Error</strong>';;
+	$temp_error = '<div class=\"row\"><div class=\"alert-error\">';;
+	$temp_error .= '<div class=\"txt-alert\"><strong>Error</strong> ';;
 	try {
 		$temp_error .= strip_input($the_error_msg);;
 	} catch (Exception $e) {
-		$temp_error = '<div class=\"alert-error\"><div class=\"txt-alert\"><strong>BUG</strong>';;
+		$temp_error = '<div class=\"alert-error\"><div class=\"txt-alert\"><strong>BUG</strong> ';;
 		$temp_error .= 'You FOUND A BUG. Please report this to my creator.';;
 	}
-	$temp_error .= '</div></div>';;
+	$temp_error .= '</div></div></div>';;
 	return $temp_error;
 }
 
