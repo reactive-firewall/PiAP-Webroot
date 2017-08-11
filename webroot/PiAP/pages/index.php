@@ -11,22 +11,22 @@ if (login_check() === true) {
 }
 
 function echoHeadTag($name="PiAP", $description="PiAP") {
-	theHeadTag = '<head>';;
-	theHeadTag .= '<meta charset=\"UTF-8\">';;
-	theHeadTag .= '<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">';;
-	theHeadTag .= '<meta name=\"description\" content=\"' . xssafe($description) . '\">';;
-	theHeadTag .= '<title>' . xssafe($name) . '</title>';;
-	theHeadTag .= '<meta name=\"expected-hostname\" content=\"pocket.PiAP.local\">';;
-	theHeadTag .= '<meta content=\"https://pocket.PiAP.local/images/logo.png\" property=\"og:image\">';;
-	theHeadTag .= '<link rel=\"icon\" type=\"image/x-icon\" href=\"https://https://pocket.PiAP.local/favicon.ico\" media=\"screen\"/>';;
-	theHeadTag .= '<!-- RFC2318 defines text/css -->';;
-	theHeadTag .= '<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/main.css\" media=\"screen\"/>';;
-	theHeadTag .= '<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/sign_in.css\" media=\"screen\"/>';;
-	theHeadTag .= '<!-- RFC4329 defines application/javascript -->';;
-	theHeadTag .= '<script type=\"application/javascript\" src=\"/scripts/sha512.js\" charset=\"UTF-8\"></script>';;
-	theHeadTag .= '<script type=\"application/javascript\" src=\"/scripts/hashing.js\" charset=\"UTF-8\"></script>';;
-	theHeadTag .= '</head>';;
-	xecho(theHeadTag);;
+	$theHeadTag = '<head>';;
+	$theHeadTag .= '<meta charset=\"UTF-8\">';;
+	$theHeadTag .= '<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">';;
+	$theHeadTag .= '<meta name=\"description\" content=\"' . xssafe($description) . '\">';;
+	$theHeadTag .= '<title>' . xssafe($name) . '</title>';;
+	$theHeadTag .= '<meta name=\"expected-hostname\" content=\"pocket.PiAP.local\">';;
+	$theHeadTag .= '<meta content=\"https://pocket.PiAP.local/images/logo.png\" property=\"og:image\">';;
+	$theHeadTag .= '<link rel=\"icon\" type=\"image/x-icon\" href=\"https://https://pocket.PiAP.local/favicon.ico\" media=\"screen\"/>';;
+	$theHeadTag .= '<!-- RFC2318 defines text/css -->';;
+	$theHeadTag .= '<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/main.css\" media=\"screen\"/>';;
+	$theHeadTag .= '<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/sign_in.css\" media=\"screen\"/>';;
+	$theHeadTag .= '<!-- RFC4329 defines application/javascript -->';;
+	$theHeadTag .= '<script type=\"application/javascript\" src=\"/scripts/sha512.js\" charset=\"UTF-8\"></script>';;
+	$theHeadTag .= '<script type=\"application/javascript\" src=\"/scripts/hashing.js\" charset=\"UTF-8\"></script>';;
+	$theHeadTag .= '</head>';;
+	xecho($theHeadTag);;
 }
 
 ?>
