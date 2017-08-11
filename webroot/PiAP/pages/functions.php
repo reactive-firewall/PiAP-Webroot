@@ -300,7 +300,7 @@ function can_x509_check() {
 				return true ;;
 			}
 		} 
-	} catch { return false ;; }
+	} catch (Exception $e) { return false ;; }
 	return false ;;
 }
 
@@ -316,7 +316,7 @@ function x509_check() {
 		} else {
 			return false ;;
 		}
-	} catch { return false ;; }
+	} catch (Exception $e) { return false ;; }
 }
 
 function has_downloaded_x509_check() {

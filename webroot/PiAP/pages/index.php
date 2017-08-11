@@ -32,9 +32,22 @@ function echoHeadTag($name="PiAP", $description="PiAP") {
 ?>
 <!DOCTYPE html>
 <html>
-    <?php
-        echoHeadTag("PiAP Login", "Please Login")
-    ?>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>PiAP</title>
+		<meta name="expected-hostname" content="pocket.PiAP.local">
+		<meta name="description" content="Please Login">
+		<meta name="author" content="PiAP">
+		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
+		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/favicon.ico">
+		<!-- RFC2318 defines text/css -->
+		<link rel="stylesheet" type="text/css" href="/styles/main.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/styles/sign_in.css" />
+		<!-- RFC4329 defines application/javascript -->
+		<script type="application/javascript" src="/scripts/sha512.js" charset="UTF-8"></script>
+		<script type="application/javascript" src="/scripts/hashing.js" charset="UTF-8"></script>
+	</head>
 	<body>
 		<div class="container">
 			<div class="panel">
