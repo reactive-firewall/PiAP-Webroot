@@ -242,14 +242,14 @@ function bindSessionToIP(){
 		if ( $client_ip === $real_ip ) {
 			return true;;
 		} else {
-			log_error("Bug 1 is here with [" . $client_ip . "] != [" . $real_ip . "]");;
+			log_error("Spoof attack with detected [" . $client_ip . "] != [" . $real_ip . "]");;
 			// error case
 			return false;;
 		}
 	} else {
 		// start session
 		store_in_session('IP', scrub_hash(hash('sha512', getRealIPAddress() )));;
-		log_error("Bind to IP");;
+		log_error("Bound to IP");;
 		return false;;
 	}
 }
@@ -282,6 +282,54 @@ function checkallergies($username){
 		// Somthing seems fake. Time to panic!
 		return true;;
 	}
+}
+
+function can_x509_check() {
+	try {
+		if (login_check() === true) {
+			if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
+					return true ;;
+			} else {
+				if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".pem") ) {
+					return true ;;
+				}
+			}
+		}
+		else{
+			if (isset($_SERVER['VERIFIED'])) {
+				return true ;;
+			}
+		} 
+	} catch { return false ;; }
+	return false ;;
+}
+
+function x509_check() {
+	try {
+		if (isset($_SERVER['VERIFIED'])) {
+			if (scrub_input($_SERVER['VERIFIED']) === true) {
+				return true ;;
+			}
+			else {
+				return false ;;
+			}
+		} else {
+			return false ;;
+		}
+	} catch { return false ;; }
+}
+
+function has_downloaded_x509_check() {
+	if (login_check() === true) {
+			if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
+					return x509_check() ;;
+			} else {
+				if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".pem") ) {
+					return x509_check() ;;
+				}
+			}
+		}
+	return false;;
 }
 
 function login($username, $password) {
@@ -370,6 +418,13 @@ function login_check() {
 			return false;
 		}
 		$user_id = get_from_session('user_id');
+		if (checkallergies($user_id) === true) {
+			// Somthing seems off. Time to panic!
+			return false;;
+		}
+		if (x509_check() === true) {
+			return true;;
+		}
 		$login_string = get_from_session('login_string');
 		$username = get_from_session('username');
 		$user_browser = scrub_input($_SERVER['HTTP_USER_AGENT']);;
@@ -401,6 +456,14 @@ function login_check() {
 	}
 	// Not logged in
 	return false;
+}
+
+function getUserName(){
+	if (login_check() === true) {
+		return scrub_hash(get_from_session('username'));;
+	} else {
+		return '';;
+	}
 }
 
 function get_brutes($badguy){

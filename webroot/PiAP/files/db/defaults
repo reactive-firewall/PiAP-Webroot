@@ -16,11 +16,11 @@ DEFAULT_WIFI_NAME="SetupPocketPiAP"
 DEFAULT_WAN_IFACE="wlan0"
 
 # the Default interface to use as a gateway interface. (Advanced setting) (NOT IMPLEMENTED YET) Usualy only useful for bridging.
-DEFAULT_GW_IFACE="${DEFAULT_WAN_IFACE:-br0}"
+DEFAULT_GW_IFACE="${DEFAULT_WAN_IFACE:-wan0}"
 
 # the Default interface to use as a gateway interface. (Advanced setting) (NOT IMPLEMENTED YET) Usualy only useful for roaming.
 DEFAULT_RECON_IFACE="${DEFAULT_WAN_IFACE:-wlan2}"
 
 # the default interface to use to host a WiFi hotspot
-DEFAULT_LAN_IFACE="wlan1"
+DEFAULT_LAN_IFACE="lan0"
 

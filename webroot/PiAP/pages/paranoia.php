@@ -11,7 +11,7 @@ function xssafe($data, $encoding='UTF-8')
 
 function xecho($data)
 {
-	echo xssafe($data);
+	echo xssafe($data, 'UTF-8');
 }
 
 function checkIntegerRange($int, $min, $max)
@@ -20,6 +20,12 @@ function checkIntegerRange($int, $min, $max)
         return false; // contains non digit characters
     }
     if (!is_int((int) $int)) {
+        return false; // other non-integer value or exceeds PHP_MAX_INT
+    }
+    if (!is_int((int) $min)) {
+        return false; // other non-integer value or exceeds PHP_MAX_INT
+    }
+    if (!is_int((int) $max)) {
         return false; // other non-integer value or exceeds PHP_MAX_INT
     }
     return ($int >= $min && $int <= $max);

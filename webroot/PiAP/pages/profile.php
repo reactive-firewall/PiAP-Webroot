@@ -4,14 +4,6 @@ include 'session.php';
 include_once 'functions.php';
 include_once 'networking.php';
 
-function can_x509_check() {
-	return False;;
-}
-
-function has_downloaded_x509_check() {
-	return True;;
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +13,7 @@ function has_downloaded_x509_check() {
 		<title>PiAP Setup</title>
 		<meta name="expected-hostname" content="pocket.PiAP.local">
 		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
-		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/favicon.ico">
 		<meta name="description" content="PiAP Setup">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
@@ -72,36 +64,38 @@ function has_downloaded_x509_check() {
 							<div class="row">
 								<form action="/pages/do_legacy_auth_setup.php" method="post" name="legacy_auth_form" class="form-config">
 									<div class="row">
-										<h2 class="form-config-heading"><strong>NOT AVAILABLE</strong> YET</h2>
+										<h2 class="form-config-heading"><strong>BETA</strong></h2>
 									</div>
 									<div class="row">
 										<label for="input_username" class="sr-only">Set Login Username</label>
-										<input type="text" name="input_username" id="input_username" class="form-control" placeholder="Admin Name" required autofocus/>
+										<?php
+										xecho('<input type=\"text\" name=\"input_username\" id=\"input_username\" class=\"form-control\" placeholder=\"' . getUserName() . '\" required autofocus/>')
+										?>
 									</div>
 									<div class="row">
 										<label for="legacy_password" class="sr-only">Set Login Password</label>
 										<input type="password" name="legacy_password" id="challenge" class="form-control" placeholder="Password" required/>
 									</div>
 									<div class="row">
-										<?php if (can_x509_check() != true) : ?>
-											<button class="btn btn-lg btn-block" id="disable_button" onclick="javascript:void(0)">Disable</button>
+										<?php if (can_x509_check() === true) : ?>
+											<button class="btn btn-lg btn-block" id="disable_button" onclick="hashsubmit(this.form.password, this.form);">Disable</button>
 										<?php endif; ?>
-										<button class="btn btn-lg btn-primary btn-block" id="update_button" onclick="javascript:void(0)">Update</button>
+										<button class="btn btn-lg btn-primary btn-block" id="update_button" onclick="hashsubmit(this.form.password, this.form);">Update</button>
 									</div>
 								</form>
 							</div>
 							<div class="row">
 								<form action="/pages/do_auth_setup.php" method="post" name="portal_auth_settings_form" class="form-config">
 									<div class="row">
-										<h2 class="form-config-heading">x509 Auth<strong>NOT AVAILABLE</strong> YET</h2>
+										<h2 class="form-config-heading">x509 Auth</h2>
 									</div>
 									<div class="row">
 										<label for="auth_cert_button" class="sr-only">Admin User Certificate</label>
 										<?php if (can_x509_check() != true) : ?>
-											<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="javascript:void(0)">Generate</button>
+											<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="submit">Generate</button>
 										<?php else : ?>
 											<?php if (has_downloaded_x509_check() != true) : ?>
-												<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="javascript:void(0)">Download</button>
+												<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="submit">Download</button>
 											<?php else : ?>
 												<button class="btn btn-lg btn-primary btn-block" id="auth_cert_button" onclick="javascript:void(0)">Regenerate</button>
 											<?php endif; ?>

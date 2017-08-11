@@ -1,5 +1,5 @@
 <?php
-include_once 'PiAP-config.php';
+include_once 'paranoia.php';
 include_once 'functions.php';
 
 sec_session_start();
@@ -9,25 +9,32 @@ if (login_check() === true) {
 } else {
     $logged = 'out';
 }
+
+function echoHeadTag($name="PiAP", $description="PiAP") {
+	theHeadTag = '<head>';;
+	theHeadTag .= '<meta charset=\"UTF-8\">';;
+	theHeadTag .= '<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">';;
+	theHeadTag .= '<meta name=\"description\" content=\"' . xssafe($description) . '\">';;
+	theHeadTag .= '<title>' . xssafe($name) . '</title>';;
+	theHeadTag .= '<meta name=\"expected-hostname\" content=\"pocket.PiAP.local\">';;
+	theHeadTag .= '<meta content=\"https://pocket.PiAP.local/images/logo.png\" property=\"og:image\">';;
+	theHeadTag .= '<link rel=\"icon\" type=\"image/x-icon\" href=\"https://https://pocket.PiAP.local/favicon.ico\" media=\"screen\"/>';;
+	theHeadTag .= '<!-- RFC2318 defines text/css -->';;
+	theHeadTag .= '<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/main.css\" media=\"screen\"/>';;
+	theHeadTag .= '<link rel=\"stylesheet\" type=\"text/css\" href=\"/styles/sign_in.css\" media=\"screen\"/>';;
+	theHeadTag .= '<!-- RFC4329 defines application/javascript -->';;
+	theHeadTag .= '<script type=\"application/javascript\" src=\"/scripts/sha512.js\" charset=\"UTF-8\"></script>';;
+	theHeadTag .= '<script type=\"application/javascript\" src=\"/scripts/hashing.js\" charset=\"UTF-8\"></script>';;
+	theHeadTag .= '</head>';;
+	xecho(theHeadTag);;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Please Login">
-        <meta name="author" content="PiAP">
-        <title>PiAP Login</title>
-        <meta name="expected-hostname" content="pocket.PiAP.local">
-		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
-		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
-        <!-- RFC2318 defines text/css -->
-        <link rel="stylesheet" type="text/css" href="/styles/main.css" media="screen"/>
-        <link rel="stylesheet" type="text/css" href="/styles/sign_in.css" media="screen"/>
-        <!-- RFC4329 defines application/javascript -->
-        <script type="application/javascript" src="/scripts/sha512.js" charset="UTF-8"></script>
-        <script type="application/javascript" src="/scripts/hashing.js" charset="UTF-8"></script>
-    </head>
+    <?php
+        echoHeadTag("PiAP Login", "Please Login")
+    ?>
 	<body>
 		<div class="container">
 			<div class="panel">
