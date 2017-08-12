@@ -310,7 +310,7 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/updates.php
 	$(QUIET)php -l webroot/PiAP/pages/do_piaplib_update.php
 	$(QUIET)php -l webroot/PiAP/pages/do_auth_setup.php
-	$(QUIET)php -l webroot/PiAP/pages/webroot/PiAP/pages/download_x509.php
+	$(QUIET)php -l webroot/PiAP/pages/download_x509.php
 	$(QUIET)php -l webroot/PiAP/pages/PiAP-updates.php
 	$(QUIET)$(ECHO) "$@: Done."
 
