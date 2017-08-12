@@ -7,7 +7,7 @@ include 'session.php';
 if (login_check() === true){
 
 	function generate_x509() {
-		exec(sprintf('../bin/generate_user_x509.bash %s 2>/dev/null > /dev/null;', escapeshellarg(getUserName()), $res, $rval);;
+		exec(sprintf('../bin/generate_user_x509.bash %s 2>/dev/null > /dev/null;', escapeshellarg(getUserName())), $res, $rval);;
 		if ($rval === 0) {
 			return true;;
 		}else {
@@ -17,7 +17,6 @@ if (login_check() === true){
 
 	if (generate_x509() === true) {
 		// tool success
-		header("Location: /files/x509/");
 		if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
 			header("Location: ../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12")
 		}
