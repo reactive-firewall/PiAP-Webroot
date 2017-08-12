@@ -49,7 +49,6 @@ if (login_check() === true){
 
 	get_x509();;
 	exit();
-	}
 } else {
 	// login first
 	header("Location: /pages/index.php?error=1");
