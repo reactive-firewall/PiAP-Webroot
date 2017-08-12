@@ -290,12 +290,12 @@ function can_x509_check() {
 			$the_user_id = get_user_id(getUserName(), get_pepper()) ;;
 			if ( file_exists("../files/x509/" . $the_user_id . ".p12") ) {
 					$the_user_id = '';;
-					unset($the_user_id)
+					unset($the_user_id);;
 					return true ;;
 			} else {
 				if ( file_exists("../files/x509/" . $the_user_id . ".pem") ) {
 					$the_user_id = '';;
-					unset($the_user_id)
+					unset($the_user_id);;
 					return true ;;
 				}
 			}
