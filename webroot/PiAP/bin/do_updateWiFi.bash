@@ -60,8 +60,8 @@
 #    even if the above stated remedy fails of its essential purpose.
 ################################################################################
 # this needs improved
-WPA_PASSWORD="${1}"
-WIFI_SSID="${2:-Guest}"
+WPA_PASSWORD="${2}"
+WIFI_SSID="${1:-Guest}"
 rm -f /etc/wpa_supplicant/wpa_supplicant.conf.new 2>/dev/null || true ; wait ;
 /srv/PiAP/bin/write_wpa_config.bash "${WIFI_SSID}" "${WPA_PASSWORD}" > /etc/wpa_supplicant/wpa_supplicant.conf.new 2>/dev/null || exit 2 ;
 wait ;

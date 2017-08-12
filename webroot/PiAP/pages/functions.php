@@ -263,14 +263,14 @@ function checkaffinity() {
 	}
 }
 
-function checkallergies($username){
+function checkallergies($userid){
 	if (checkaffinity() === true) {
 		if (!isset($_SERVER['HTTP_USER_AGENT'])) {
 			log_error("Banner-Grab attack detected.");;
 			// Somthing seems off. Time to panic!
 			return true;
 		} else {
-			$attempts = get_brutes($username);;
+			$attempts = get_brutes($userid);;
 			if ($attempts < 3) {
 				return false;;
 			} else {
@@ -287,10 +287,15 @@ function checkallergies($username){
 function can_x509_check() {
 	try {
 		if (login_check() === true) {
-			if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
+			$the_user_id = get_user_id(getUserName(), get_pepper()) ;;
+			if ( file_exists("../files/x509/" . $the_user_id . ".p12") ) {
+					$the_user_id = '';;
+					unset($the_user_id)
 					return true ;;
 			} else {
-				if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".pem") ) {
+				if ( file_exists("../files/x509/" . $the_user_id . ".pem") ) {
+					$the_user_id = '';;
+					unset($the_user_id)
 					return true ;;
 				}
 			}
@@ -386,7 +391,7 @@ function login($username, $password) {
 					return true;
 				} else {
 					// FOOD FIGHT
-					//add_brutes($user_id);
+					add_brutes($user_id);
 					//$now = time();
 					// clear the table
 					// so swallow the key

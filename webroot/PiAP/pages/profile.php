@@ -69,7 +69,9 @@ include_once 'networking.php';
 									<div class="row">
 										<label for="input_username" class="sr-only">Set Login Username</label>
 										<?php
-										xecho('<input type=\"text\" name=\"input_username\" id=\"input_username\" class=\"form-control\" placeholder=\"' . getUserName() . '\" required autofocus/>')
+										echo('<input type=\"text\" name=\"input_username\" id=\"input_username\" class=\"form-control\" placeholder=') ;
+										xecho(getUserName()) ;
+										echo(' required autofocus/>') ;;
 										?>
 									</div>
 									<div class="row">

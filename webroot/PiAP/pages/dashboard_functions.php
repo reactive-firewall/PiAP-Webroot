@@ -6,11 +6,11 @@ include_once 'functions.php';
 function uptime_status() {
 	exec(sprintf('uptime -p'), $res, $rval);;
 	if ($rval === 0) {
-		$blob = "<p>PiAP has been ";
+		$blob = "<div class=\"row\"><p>PiAP has been ";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= xssafe($res[$num]) . "\n";
 		};
-		$blob .= "</p>";
+		$blob .= "</p></div>";
 		return $blob ;;
 	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
@@ -20,7 +20,7 @@ function uptime_status() {
 function memory_status() {
 	exec(sprintf('../bin/memory_status_table.bash'), $res, $rval);;
 	if ($rval === 0) {
-		$blob = "<div>";
+		$blob = "<div class=\"row\">";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= $res[$num] . "\n";
 		};
@@ -34,11 +34,11 @@ function memory_status() {
 function entropy_status() {
 	exec(sprintf('/usr/lib/nagios/plugins/check_entropy'), $res, $rval);;
 	if ($rval === 0) {
-		$blob = "<pre class=\"box\">Entropy ";
+		$blob = "<div class=\"row\"><p>Entropy ";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= xssafe($res[$num]) . "\n";
 		};
-		$blob .= "</pre>";
+		$blob .= "</p></div>";
 		return $blob ;;
 	} else {
 		return tool_error_msg("Server error. (tool_bug) 500");
@@ -76,7 +76,7 @@ function disk_status() {
 function temperature_status() {
 	exec(sprintf('../bin/temperature_status.bash'), $res, $rval);;
 	if ($rval === 0) {
-		$blob = "<div id=\"temperature_box\">";
+		$blob = "<div id=\"temperature_box\" class=\"row\">";
 		for ($num = 0; $num < count($res) ; $num++) {
 			$blob .= $res[$num] . "\n";
 		};
