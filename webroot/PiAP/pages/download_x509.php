@@ -39,36 +39,16 @@ if (login_check() === true){
 				// file save was a success
 				@fclose($file);
 			}
-		exit;
-				fclose($auth_file);;
-			}
+			exit();
 		} catch (Exception $e) {
 		    header("Location: /pages/error.php?err=Security Error. Session not trusted. (crypt_weak) 406");
 			exit();
 		}
-		if ($x509_data !== "") {
-			return $x509_data;;
-		} else {
-			header("Location: /pages/error.php?err=Security Error. Session not trusted. (crypt_weak) 406");
-			exit();
-			return "";;
-		}
+		exit();
 	}
 
-	if (generate_x509() === true) {
-		// tool success
-		if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
-			header("Location: ../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12");;
-		}
-		exit();
-	} else {
-		// tool failed
-		if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
-			header("Location: /pages/error.php?err=Could not regenerate x509. (bad_tool) 500");
-		} else {
-			header("Location: /pages/error.php?err=Could not generate x509. (bad_tool) 500");
-		}
-		exit();
+	get_x509();;
+	exit();
 	}
 } else {
 	// login first
