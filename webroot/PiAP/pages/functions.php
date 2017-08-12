@@ -288,12 +288,12 @@ function can_x509_check() {
 	try {
 		if (login_check() === true) {
 			$the_user_id = get_user_id(getUserName(), get_pepper()) ;;
-			if ( file_exists("../files/x509/" . $the_user_id . ".p12") ) {
+			if ( file_exists("../files/db/x509/" . $the_user_id . ".p12") ) {
 					$the_user_id = '';;
 					unset($the_user_id);;
 					return true ;;
 			} else {
-				if ( file_exists("../files/x509/" . $the_user_id . ".pem") ) {
+				if ( file_exists("../files/db/x509/" . $the_user_id . ".pem") ) {
 					$the_user_id = '';;
 					unset($the_user_id);;
 					return true ;;
@@ -326,10 +326,15 @@ function x509_check() {
 
 function has_downloaded_x509_check() {
 	if (login_check() === true) {
-			if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
+			$the_user_id = get_user_id(getUserName(), get_pepper()) ;;
+			if ( file_exists("../files/db/x509/" . $the_user_id . ".p12") ) {
+					$the_user_id = '';;
+					unset($the_user_id);;
 					return x509_check() ;;
 			} else {
-				if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".pem") ) {
+				if ( file_exists("../files/db/x509/" . $the_user_id . ".pem") ) {
+					$the_user_id = '';;
+					unset($the_user_id);;
 					return x509_check() ;;
 				}
 			}

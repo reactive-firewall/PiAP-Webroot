@@ -18,14 +18,13 @@ if (login_check() === true){
 	if (generate_x509() === true) {
 		// tool success
 		if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
-			header("Location: ../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12")
+			header("Location: ../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12");;
 		}
 		exit();
 	} else {
 		// tool failed
 		if ( file_exists("../files/x509/" . get_user_id(getUserName(), get_pepper()) . ".p12") ) {
 			header("Location: /pages/error.php?err=Could not regenerate x509. (bad_tool) 500");
-			
 		} else {
 			header("Location: /pages/error.php?err=Could not generate x509. (bad_tool) 500");
 		}
