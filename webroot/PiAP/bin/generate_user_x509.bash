@@ -70,17 +70,13 @@ USER_ID=$(/srv/dsauth.py -C -f /srv/PiAP/files/db/passwd -X $(sudo -u pocket-www
 # Create the Client Key and CSR
 LINK_STUB_PATH="/srv/PiAP/files/db/x509/${USER_ID:-client}"
 FILE_STUB_PATH="/etc/ssl/PiAPCA/certs/${USER_ID:-client}"
-mkdir -p /srv/PiAP/files/db/x509
-mkdir -p /etc/ssl/PiAPCA/certs
-chown 0:pocket-admin /etc/ssl/PiAPCA/certs 2>/dev/null > /dev/null || true
-chmod 751 /etc/ssl/PiAPCA/certs 2>/dev/null > /dev/null || true
-chown 0:pocket-admin /etc/ssl/PiAPCA/ 2>/dev/null > /dev/null || true
-chmod 755 /etc/ssl/PiAPCA/ 2>/dev/null > /dev/null || true
+mkdir -p /srv/PiAP/files/db/x509 2>/dev/null > /dev/null || true
+mkdir -p /etc/ssl/PiAPCA/certs 2>/dev/null > /dev/null || true
 rm -f ${FILE_STUB_PATH:-client}.key 2>/dev/null > /dev/null || true
 rm -f ${FILE_STUB_PATH:-client}.pem 2>/dev/null > /dev/null || true
 openssl genrsa -out ${FILE_STUB_PATH:-client}.key 2048 2>/dev/null > /dev/null || EXIT_CODE=2
 openssl req -new -key ${FILE_STUB_PATH:-client}.key -subj "/CN=${CN_USERNAME}/OU=Client/O=PiAP\ Network/" -out ${FILE_STUB_PATH:-client}.csr 2>/dev/null > /dev/null || EXIT_CODE=2
-openssl ca -config /etc/ssl/PiAP_keyring.cfg -days 365 -in ${FILE_STUB_PATH:-client}.csr -extfile /etc/ssl/PiAP_keyring.cfg -extensions client_cert -batch | fgrep --after-context=400 -e $"-----BEGIN CERTIFICATE-----" | tee -a ${FILE_STUB_PATH:-client}.pem 2>/dev/null > /dev/null
+openssl ca -config /etc/ssl/PiAP_keyring.cfg -days 365 -in ${FILE_STUB_PATH:-client}.csr -extfile /etc/ssl/PiAP_keyring.cfg -extensions client_cert -batch | fgrep --after-context=400 -e $"-----BEGIN CERTIFICATE-----" | tee -a ${FILE_STUB_PATH:-client}.pem 2>/dev/null > /dev/null || true
 
 openssl pkcs12 -export -nodes -in ${FILE_STUB_PATH}.pem -inkey ${FILE_STUB_PATH:-client}.key -out ${FILE_STUB_PATH}.p12 -name "${1}"
 cp -f ${FILE_STUB_PATH}.p12 ${LINK_STUB_PATH}.p12
