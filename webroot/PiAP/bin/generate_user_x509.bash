@@ -59,15 +59,32 @@
 #    the amount of five dollars ($5.00). The foregoing limitations will apply
 #    even if the above stated remedy fails of its essential purpose.
 ################################################################################
-# this needs improved
-WPA_PASSWORD="${2}"
-WIFI_SSID="${1:-Guest}"
-rm -f /etc/wpa_supplicant/wpa_supplicant.conf.new 2>/dev/null || true ; wait ;
-/srv/PiAP/bin/write_wpa_config.bash "${WIFI_SSID}" "${WPA_PASSWORD}" > /etc/wpa_supplicant/wpa_supplicant.conf.new 2>/dev/null || exit 2 ;
-wait ;
+ulimit -t 300
+umask 137
+PATH="/bin:/sbin:/usr/sbin:/usr/bin"
+#
+# CWE-20 if this admit tool is exposed directly
+CN_USERNAME="${1:-operator}"
+# USER_ID - the user id used for the certificate
+USER_ID=$(/srv/dsauth.py -C -f /srv/PiAP/files/db/passwd -X $(sudo -u pocket-www head -n 1 /srv/PiAP/files/db/pepper) -U ${CN_USERNAME} )
+# Create the Client Key and CSR
+LINK_STUB_PATH="/srv/PiAP/files/db/x509/${USER_ID:-client}"
+FILE_STUB_PATH="/etc/ssl/PiAPCA/certs/${USER_ID:-client}"
+mkdir -p /srv/PiAP/files/db/x509 2>/dev/null > /dev/null || true
+mkdir -p /etc/ssl/PiAPCA/certs 2>/dev/null > /dev/null || true
+rm -f ${FILE_STUB_PATH:-client}.key 2>/dev/null > /dev/null || true
+rm -f ${FILE_STUB_PATH:-client}.pem 2>/dev/null > /dev/null || true
+openssl genrsa -out ${FILE_STUB_PATH:-client}.key 2048 2>/dev/null > /dev/null || EXIT_CODE=2
+openssl req -new -key ${FILE_STUB_PATH:-client}.key -subj "/CN=${CN_USERNAME}/OU=Client/O=PiAP\ Network/" -out ${FILE_STUB_PATH:-client}.csr 2>/dev/null > /dev/null || EXIT_CODE=2
+openssl ca -config /etc/ssl/PiAP_keyring.cfg -days 365 -in ${FILE_STUB_PATH:-client}.csr -extfile /etc/ssl/PiAP_keyring.cfg -extensions client_cert -batch | fgrep --after-context=400 -e $"-----BEGIN CERTIFICATE-----" | tee -a ${FILE_STUB_PATH:-client}.pem 2>/dev/null > /dev/null || true
 
-sync ; wait ;
+openssl pkcs12 -export -nodes -in ${FILE_STUB_PATH}.pem -inkey ${FILE_STUB_PATH:-client}.key -out ${FILE_STUB_PATH}.p12 -name "${1}"
+cp -f ${FILE_STUB_PATH}.p12 ${LINK_STUB_PATH}.p12
+cp -f ${FILE_STUB_PATH}.pem ${LINK_STUB_PATH}.pem
+chown 0:pocket-www ${LINK_STUB_PATH}.p* 2>/dev/null > /dev/null || true
+chmod 640 ${LINK_STUB_PATH}.p* 2>/dev/null > /dev/null || true
 
-/usr/sbin/service wirelessWiFi restart 2>/dev/null ; wait ;
+shred --zero ${FILE_STUB_PATH:-client}.key 2>/dev/null > /dev/null || true
+rm -f ${FILE_STUB_PATH:-client}.key 2>/dev/null > /dev/null || true
 
-exit 0;
+exit ${EXIT_CODE:-0} ;

@@ -51,7 +51,7 @@ endif
 ifeq "$(INSTALL)" ""
 	INSTALL=`which install`
 	ifeq "$(INST_OWN)" ""
-		INST_OWN=-C -o root -g www-data
+		INST_OWN=-C -o pocket-admin -g pocket-www
 	endif
 	ifeq "$(INST_OPTS)" ""
 		INST_OPTS=-m 750
@@ -117,6 +117,7 @@ install-cgi: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_status.bash /srv/PiAP/bin/user_status.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/user_status_table.bash /srv/PiAP/bin/user_status_table.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/write_wpa_config.bash /srv/PiAP/bin/write_wpa_config.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/generate_user_x509.bash /srv/PiAP/bin/generate_user_x509.bash
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-cgi: must_be_root
@@ -149,6 +150,7 @@ uninstall-cgi: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/bin/user_status.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/bin/user_status_table.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/bin/write_wpa_config.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/generate_user_x509.bash 2>/dev/null || true
 	$(QUIET)$(RMDIR) /srv/PiAP/bin 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
@@ -213,6 +215,9 @@ uninstall-pages: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/pages/PiAP-wan-setup.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/error.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/profile.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/do_auth_setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/do_legacy_auth_setup.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/download_x509.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/updates.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/do_piaplib_update.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/PiAP-updates.php 2>/dev/null || true
@@ -243,6 +248,8 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-wan-setup.php /srv/PiAP/pages/PiAP-wan-setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/error.php /srv/PiAP/pages/error.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/profile.php /srv/PiAP/pages/profile.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_auth_setup.php /srv/PiAP/pages/do_auth_setup.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/download_x509.php /srv/PiAP/pages/download_x509.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/updates.php /srv/PiAP/pages/updates.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_piaplib_update.php /srv/PiAP/pages/do_piaplib_update.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-updates.php /srv/PiAP/pages/PiAP-updates.php
@@ -302,6 +309,8 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/profile.php
 	$(QUIET)php -l webroot/PiAP/pages/updates.php
 	$(QUIET)php -l webroot/PiAP/pages/do_piaplib_update.php
+	$(QUIET)php -l webroot/PiAP/pages/do_auth_setup.php
+	$(QUIET)php -l webroot/PiAP/pages/download_x509.php
 	$(QUIET)php -l webroot/PiAP/pages/PiAP-updates.php
 	$(QUIET)$(ECHO) "$@: Done."
 
