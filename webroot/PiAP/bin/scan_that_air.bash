@@ -66,13 +66,19 @@ umask 137
 ##Bug [PiAP-03] issue with delimiter and positive signal values
 declare SWAP_SCAN_FILE=/dev/shm/PiAP_wifi_scan_cache.txt
 
+HAS_POCKET_USER=$(id pocket-www 1>&2 2>/dev/null >> /dev/null && echo -n 0 || echo -n $?)
+POCKET_WEB_USER="www-data"
+if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] then 
+	POCKET_WEB_USER="pocket-www"
+fi
+
 eval $(grep -a "DEFAULT_*_IFACE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 eval $(grep -a "*_FILE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 eval $(fgrep "USE_HTML=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 
 if [[ !( -f $SWAP_SCAN_FILE) ]] ; then
 	iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan last | fgrep -v "IE: Unknown:" >"${SWAP_SCAN_FILE}"
-	chown www-data:www-data "${SWAP_SCAN_FILE}"
+	chown ${POCKET_WEB_USER}:${POCKET_WEB_USER} "${SWAP_SCAN_FILE}"
 fi
 
 USE_HTML=${USE_HTML:-1}

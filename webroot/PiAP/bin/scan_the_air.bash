@@ -64,13 +64,19 @@ PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 umask 137
 declare SWAP_SCAN_FILE=/dev/shm/PiAP_wifi_scan_cache.txt
 
+HAS_POCKET_USER=$(id pocket-www 1>&2 2>/dev/null >> /dev/null && echo -n 0 || echo -n $?)
+POCKET_WEB_USER="www-data"
+if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] then 
+	POCKET_WEB_USER="pocket-www"
+fi
+
 eval $(grep -a "DEFAULT_*_IFACE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 eval $(grep -a "*_FILE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 eval $(fgrep "USE_HTML=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 
 if [[ !( -f $SWAP_SCAN_FILE) ]] ; then
 	iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan last | fgrep -v "IE: Unknown:" >"${SWAP_SCAN_FILE}"
-	chown www-data:www-data "${SWAP_SCAN_FILE}"
+	chown ${POCKET_WEB_USER}:${POCKET_WEB_USER} "${SWAP_SCAN_FILE}"
 fi
 
 MY_SSID_DATA=$(iwconfig wlan0 2>/dev/null)
