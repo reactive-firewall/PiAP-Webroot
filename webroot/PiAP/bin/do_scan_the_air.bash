@@ -67,22 +67,26 @@ ulimit -t 60
 # because this seems like the bigest surface of attack
 
 declare SWAP_SCAN_FILE=/dev/shm/PiAP_wifi_scan_cache.txt
-
+HAS_POCKET_USER=$(id pocket-www 1>&2 2>/dev/null >> /dev/null && echo -n 0 || echo -n $?)
+POCKET_WEB_USER="www-data"
+if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] then 
+	POCKET_WEB_USER="pocket-www"
+fi
 eval $(fgrep "_IFACE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 eval $(fgrep "SWAP_SCAN_FILE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 
 if [[ ( -f $SWAP_SCAN_FILE ) ]] && [[ ( $(fgrep --count "Cell" $SWAP_SCAN_FILE | grep -oE '^\s?[0-9]+\s?') -gt 3 ) ]] ; then exit 0; fi ;
 
 iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan last 2>/dev/null >/dev/null || true ; wait ;
-chown www-data:www-data "${SWAP_SCAN_FILE}"
+chown ${POCKET_WEB_USER}:${POCKET_WEB_USER} "${SWAP_SCAN_FILE}"
 sleep 0.1s
 sudo iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan 2>/dev/null >/dev/null || true ; wait ;
-chown www-data:www-data "${SWAP_SCAN_FILE}"
+chown ${POCKET_WEB_USER}:${POCKET_WEB_USER} "${SWAP_SCAN_FILE}"
 sleep 0.2s
 
 while [[ !( -f $SWAP_SCAN_FILE) ]] || [[ ( $(fgrep --count "Cell" $SWAP_SCAN_FILE 2>/dev/null | grep -oE '^\s?[0-9]+\s?' ) -lt 3 ) ]] ; do
 	sudo iwlist ${DEFAULT_RECON_IFACE:-wlan0} scan 2>/dev/null | fgrep -v "IE: Unknown:" >"${SWAP_SCAN_FILE}" ; wait ;
-	chown www-data:www-data "${SWAP_SCAN_FILE}"
+	chown ${POCKET_WEB_USER}:${POCKET_WEB_USER} "${SWAP_SCAN_FILE}"
 	sleep 0.5s ; wait ;
 done
 

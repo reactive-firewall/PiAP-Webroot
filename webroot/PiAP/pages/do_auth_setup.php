@@ -7,7 +7,7 @@ include 'session.php';
 if (login_check() === true){
 
 	function generate_x509() {
-		exec(sprintf('../bin/generate_user_x509.bash %s 2>/dev/null > /dev/null;', escapeshellarg(getUserName())), $res, $rval);;
+		exec(sprintf('../bin/generate_user_x509.bash %s 2>/dev/null > /dev/null ;', escapeshellarg(getUserName())), $res, $rval);;
 		if ($rval === 0) {
 			return true;;
 		}else {

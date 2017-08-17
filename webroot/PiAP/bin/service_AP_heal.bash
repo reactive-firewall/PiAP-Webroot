@@ -85,7 +85,7 @@ eval $(fgrep "USE_HTML=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 
 #ip addr | grep -oE '\s[aehltw]{3}[n]?[0-9]+[:]{1}' | grep -oE '[aehltw]{3}[n]?[0-9]+' | sort | uniq ;
 WAN_IFACE="${DEFAULT_WAN_IFACE:-wlan0}"
-LAN_IFACE="${DEFAULT_LAN_IFACE:-lan1}"
+LAN_IFACE="${DEFAULT_LAN_IFACE:-lan0}"
 LAN_IS_BRIDGED="${LAN_IS_BRIDGED:-1}"
 CLEAN_UP=0;
 
