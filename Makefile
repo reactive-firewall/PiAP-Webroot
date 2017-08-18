@@ -281,7 +281,7 @@ uninstall: uninstall-cgi uninstall-pages uninstall-scripts uninstall-styles unin
 	$(QUIET)$(ECHO) "$@: Done."
 
 purge: clean uninstall
-	$(QUIET)python3 -m pip uninstall piaplib 2>/dev/null || true
+	$(QUIET)python3 -m pip uninstall -y piaplib 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 test: cleanup test-extras
