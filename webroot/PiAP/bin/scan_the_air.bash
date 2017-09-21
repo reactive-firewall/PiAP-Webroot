@@ -66,7 +66,7 @@ declare SWAP_SCAN_FILE=/dev/shm/PiAP_wifi_scan_cache.txt
 
 HAS_POCKET_USER=$(id pocket-www 1>&2 2>/dev/null >> /dev/null && echo -n 0 || echo -n $?)
 POCKET_WEB_USER="www-data"
-if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] then 
+if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] ; then 
 	POCKET_WEB_USER="pocket-www"
 fi
 
