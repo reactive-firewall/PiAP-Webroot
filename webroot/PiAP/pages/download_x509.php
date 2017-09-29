@@ -18,9 +18,9 @@ if (login_check() === true){
 				$file_size  = filesize($file_path);
 				@apache_setenv('no-gzip', 1);
 				@ini_set('zlib.output_compression', 'Off');
-				header("Pragma: public");
+				header("Pragma: private");
 				header("Expires: -1");
-				header("Cache-Control: public, must-revalidate, post-check=0, pre-check=0");
+				header("Cache-Control: private, must-revalidate, post-check=0, pre-check=0");
 				header("Content-Disposition: inline;");
 				header("Content-Type: application/octet-stream;" . $ctype);
 				header("Content-Length: $file_size");
