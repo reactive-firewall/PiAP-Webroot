@@ -131,10 +131,10 @@ function get_pepper(){
 			$pepper = fgets($file);
 		}
 		fclose($file);;
-    } catch (Exception $e) {
-        header("Location: /pages/error.php?err=Security Error. Session not trusted. (crypt_weak) 406");
+	} catch (Exception $e) {
+		header("Location: /pages/error.php?err=Security Error. Session not trusted. (crypt_weak) 406");
 		exit();
-    }
+	}
 	if ($pepper !== "") {
 		return $pepper;;
 	} else {
@@ -477,7 +477,7 @@ function getUserName(){
 }
 
 function get_brutes($badguy){
-	$brute = 0;
+	(int) $brute = 0;
 	$file = @fopen("../files/db/brutes/" . escapeshellarg(hash('sha512', scrub_input($badguy))), "r");;
 	if ($file != false) {
 		while(!feof($file))
@@ -490,19 +490,25 @@ function get_brutes($badguy){
 	if (checkIntegerRange($brute, 0, 5)) {
 		return $brute;;
 	} else {
-		return 0;;
+		return (int) 0;;
 	}
 }
 
 function add_brutes($badguy){
-	$attempt = get_brutes($badguy);;
+	(int) $attempt = get_brutes($badguy);;
 	if (checkIntegerRange($attempt, 0, 5)) {
 		$attempt = ($attempt + 1);;
-		file_put_contents('../files/db/brutes/' . escapeshellarg(hash('sha512', scrub_input($badguy))), $attempt, FILE_APPEND | LOCK_EX );;
+		$res = file_put_contents("../files/db/brutes/" . escapeshellarg(hash('sha512', scrub_input($badguy))), $attempt, FILE_APPEND | LOCK_EX );;
 	};; // else overflow protect might be DoS attack
 	return false;
 }
 
+
+function startsWith($haystack, $needle)
+{
+     $length = strlen($needle);
+     return (substr($haystack, 0, $length) === $needle);
+}
 
 function esc_url($url) {
 
@@ -527,10 +533,11 @@ function esc_url($url) {
 	$url = str_replace('&amp;', '&#038;', $url);
 	$url = str_replace("'", '&#039;', $url);
 
-	if ($url[0] === '/') {
+	if (startsWith($url, '/') === true) {
 		// We're only interested in relative links from PHP_SELF
 		return $url;
 	} else {
+		log_error("URL injection attack detected.");;
 		return '';
 	}
 }
