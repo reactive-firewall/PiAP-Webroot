@@ -200,6 +200,7 @@ uninstall-pages: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/pages/dashboard.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/networking.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/do_login.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/logview.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/logout.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/landing.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/wan_setup.php 2>/dev/null || true
@@ -233,6 +234,7 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/dashboard_functions.php /srv/PiAP/pages/dashboard_functions.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/networking.php /srv/PiAP/pages/networking.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_login.php /srv/PiAP/pages/do_login.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/logview.php /srv/PiAP/pages/logview.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/logout.php /srv/PiAP/pages/logout.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/landing.php /srv/PiAP/pages/landing.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/wan_setup.php /srv/PiAP/pages/wan_setup.php
