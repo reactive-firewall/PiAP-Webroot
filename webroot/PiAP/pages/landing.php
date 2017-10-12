@@ -1,24 +1,21 @@
 <?php
-
 include 'session.php';
-include_once 'networking.php';
-
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>loading...</title>
+		<title>loading</title>
 		<meta name="expected-hostname" content="pocket.PiAP.local">
 		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
-		<meta name="description" content="PiAP is Loading">
-		<meta name="author" content="PiAP">
+		<meta name="description" content="Loading">
+		<meta name="author" content="">
 		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/favicon.ico">
 		<!-- RFC2318 defines text/css -->
-		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
+		<link rel="stylesheet" type="text/css" href="/styles/main.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/styles/grid.css"/>
-		<link rel="stylesheet" type="text/css" href="/styles/loaders.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/styles/loaders.min.css" media="screen"/>
 		<!-- Loading page send to dashboard -->
 		<meta http-equiv="Refresh" content="1; URL=https://pocket.PiAP.local/pages/dashboard.php">
 	</head>
@@ -36,15 +33,13 @@ include_once 'networking.php';
 				<li class="dropdown">
 					<a href="javascript:void(0)" class="dropbtn">Configuration</a>
 					<div class="dropdown-content">
-						<a href="/pages/lan_setup.php">Lan Setup</a>
-						<a href="/pages/wan_setup.php">Wan Setup</a>
-						<a href="/pages/profile.php">User Setup</a>
+						<a href="javascript:void(0)">Loading</a>
 					</div>
 				</li>
 				<li class="dropdown">
 						<a href="javascript:void(0)" class="dropbtn">Command Center</a>
 						<div class="dropdown-content">
-							<a href="/pages/updates.php">Updates</a>
+							<a href="javascript:void(0)">Loading</a>
 						</div>
 				</li>
 				<li class="dropdown">
