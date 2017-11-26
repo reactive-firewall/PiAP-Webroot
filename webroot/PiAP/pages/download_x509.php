@@ -9,7 +9,7 @@ if (login_check() === true){
 	function get_x509(){
 		// check the pepper var is empty
 		$x509_data = "";;
-		$file_path = "../files/db/x509/";
+		$file_path = "../files/x509/";
 		$file_path .= get_user_id(getUserName(), get_pepper());
 		$file_path .= ".p12" ;;
 		try {
@@ -22,7 +22,7 @@ if (login_check() === true){
 				header("Expires: -1");
 				header("Cache-Control: private, must-revalidate, post-check=0, pre-check=0");
 				header("Content-Disposition: inline;");
-				header("Content-Type: application/octet-stream;" . $ctype);
+				header("Content-Type: application/octet-stream;");
 				header("Content-Length: $file_size");
 				$auth_file = @fopen($file_path, "rb");;
 				fseek($auth_file, 0);
@@ -30,11 +30,11 @@ if (login_check() === true){
 					print(@fread($auth_file, 1024*8));
 					ob_flush();
 					flush();
-					if (connection_status()!=0) 
+					if (connection_status()!=0)
 					{
 						@fclose($auth_file);
 						exit();
-					}			
+					}
 				}
 				// file save was a success
 				@fclose($file);
