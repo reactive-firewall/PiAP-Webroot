@@ -90,7 +90,7 @@ install-webroot: webroot must_be_root
 
 install-cgi: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/bin
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/client_status_table.bash /srv/PiAP/bin/client_status_table.bash
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/client_status.bash /srv/PiAP/bin/client_status.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/compile_interface /srv/PiAP/bin/compile_interface
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/disk_status_table.bash /srv/PiAP/bin/disk_status_table.bash
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_OPTS) ./webroot/PiAP/bin/do_scan_the_air.bash /srv/PiAP/bin/do_scan_the_air.bash
@@ -123,6 +123,7 @@ install-cgi: install-webroot must_be_root
 uninstall-cgi: must_be_root
 	$(QUIET)$(RMDIR) /srv/PiAP/bin 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/bin/client_status_table.bash 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/bin/client_status.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/bin/compile_interface 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/bin/disk_status_table.bash 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/bin/do_scan_the_air.bash 2>/dev/null || true
@@ -319,7 +320,7 @@ test: cleanup test-extras
 test-extras: cleanup
 	$(QUIET)flake8 --ignore=W191,W391 --max-line-length=100 --count webroot/PiAP/bin/saltify.py || true
 	$(QUIET)$(ECHO) "$@: Done."
-	
+
 test-tox: cleanup
 	$(QUIET)tox flake
 	$(QUIET)$(ECHO) "$@: Done."
