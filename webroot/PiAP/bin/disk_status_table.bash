@@ -1,5 +1,5 @@
 #! /bin/bash --posix
-# Disclaimer of Warranties. 
+# Disclaimer of Warranties.
 # A. YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT, TO THE EXTENT PERMITTED BY
 #    APPLICABLE LAW, USE OF THIS SHELL SCRIPT AND ANY SERVICES PERFORMED
 #    BY OR ACCESSED THROUGH THIS SHELL SCRIPT IS AT YOUR SOLE RISK AND
@@ -14,8 +14,8 @@
 #    SOFTWARE AND SERVICES, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
 #    NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF
 #    MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE,
-#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. 
-#    
+#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS.
+#
 # C. THE AUTHOR OF PIAP DOES NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE
 #    THE AUTHOR OF PIAP SOFTWARE AND SERVICES, THAT THE FUNCTIONS CONTAINED IN, OR
 #    SERVICES PERFORMED OR PROVIDED BY, THIS SHELL SCRIPT WILL MEET YOUR
@@ -64,6 +64,6 @@ umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 echo "<table id="disk_status" class=\"table table-striped\"><thead><th>Name</th><th>Size</th><th>Type</th><th>Mountpoint</th></thead>"
 echo "<tbody>"
-lsblk --list -o NAME,SIZE,TYPE,MOUNTPOINT | tr -s ' ' ' ' | tail -n +2 | sed -E -e 's/(\s+){1}([^ /]+){1}(\s*){1}$/&<td><i>none<\/i><\/td>/g' | sed -E -e 's/(\s*){1}([^ ]+){1}(\s*){1}/<td>\2<\/td>/g' | sed -E -e 's/^(.+){1}$/<tr>\1<\/tr>/g' | sed -E -e 's/(<\/td>){2}/<\/td>/g' | sed -E -e 's/(<td>){2}/<td>/g' ;
+lsblk --list -o NAME,SIZE,TYPE,MOUNTPOINT | tr -s ' ' ' ' | tail -n +2 | sed -E -e 's/(\s+){1}([^ /[]+){1}(\s*){1}$/&<td><i>none<\/i><\/td>/g' | sed -E -e 's/(\s*){1}([^ ]+){1}(\s*){1}/<td>\2<\/td>/g' | sed -E -e 's/^(.+){1}$/<tr>\1<\/tr>/g' | sed -E -e 's/(<\/td>){2}/<\/td>/g' | sed -E -e 's/(<td>){2}/<td>/g' ;
 echo "</tbody></table>"
 exit 0 ;

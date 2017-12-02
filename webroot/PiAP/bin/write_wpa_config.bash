@@ -1,5 +1,5 @@
 #! /bin/bash
-# Disclaimer of Warranties. 
+# Disclaimer of Warranties.
 # A. YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT, TO THE EXTENT PERMITTED BY
 #    APPLICABLE LAW, USE OF THIS SHELL SCRIPT AND ANY SERVICES PERFORMED
 #    BY OR ACCESSED THROUGH THIS SHELL SCRIPT IS AT YOUR SOLE RISK AND
@@ -14,8 +14,8 @@
 #    SOFTWARE AND SERVICES, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
 #    NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF
 #    MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE,
-#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. 
-#    
+#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS.
+#
 # C. THE AUTHOR OF PIAP DOES NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE
 #    THE AUTHOR OF PIAP SOFTWARE AND SERVICES, THAT THE FUNCTIONS CONTAINED IN, OR
 #    SERVICES PERFORMED OR PROVIDED BY, THIS SHELL SCRIPT WILL MEET YOUR
@@ -68,9 +68,13 @@ declare SWAP_SCAN_FILE=/dev/shm/PiAP_wifi_scan_cache.txt
 eval $(grep -a "DEFAULT_*_IFACE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 eval $(grep -a "WAN_IFACE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
 eval $(grep -a "*_FILE=" /srv/PiAP/files/db/defaults ) 2>/dev/null
+# Caveat: this is a CWE-20 as result of the upstream spec that wifi ssid can be any bytes even code.
 NODE_DATA=$(sudo USE_HTML=0 /srv/PiAP/bin/scan_that_air.bash | fgrep -m1 "${1}" ) ;
 
+# non-US users NO SUPPORT FOR LOCAL RADIO ENERGY REGULATIONS. USE AT OWN RISK.
+# In theory one can change this to local region code if Hostapd supports it.
 echo "country=US"
+#
 echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev"
 #echo "update_config=1"
 echo ""
@@ -106,11 +110,15 @@ echo -e "\t\tkey_mgmt=NONE"
 fi
 echo -e "\t\tscan_ssid=1"
 if [[ ( $(echo -n $WIFI_PROTO | fgrep --count "WPA" 2>/dev/null ) -gt 0) ]] ; then
-echo -ne "\t\tpsk="
-echo -n "\""
-echo -n "${2:-password}"
-echo "\""
+#echo -ne "\t\tpsk="
+#echo -n "\""
+#echo -n "${2:-password}"
+#echo "\""
+# already compromised in local memory and on commandline when input to this script
+# need to test this input for CWE-20
+echo "${2:-password}" | wpa_passphrase $(echo -n "$NODE_DATA" | cut -d- -f 1 ) | fgrep "psk=" ; wait ;
 elif [[ ( $(echo -n $WIFI_PROTO | fgrep --count "WEP" 2>/dev/null ) -gt 0) ]] ; then
+# this feature probably will go away and be replaced by aircrack-ng results for WEP. DON'T USE WEP.
 echo -ne "\t\tpassword="
 echo -n "\""
 echo -n "${2:-password}"

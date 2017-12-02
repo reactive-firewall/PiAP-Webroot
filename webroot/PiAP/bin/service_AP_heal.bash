@@ -1,5 +1,5 @@
 #! /bin/bash
-# Disclaimer of Warranties. 
+# Disclaimer of Warranties.
 # A. YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT, TO THE EXTENT PERMITTED BY
 #    APPLICABLE LAW, USE OF THIS SHELL SCRIPT AND ANY SERVICES PERFORMED
 #    BY OR ACCESSED THROUGH THIS SHELL SCRIPT IS AT YOUR SOLE RISK AND
@@ -14,8 +14,8 @@
 #    SOFTWARE AND SERVICES, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
 #    NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF
 #    MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE,
-#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. 
-#    
+#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS.
+#
 # C. THE AUTHOR OF PIAP DOES NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE
 #    THE AUTHOR OF PIAP SOFTWARE AND SERVICES, THAT THE FUNCTIONS CONTAINED IN, OR
 #    SERVICES PERFORMED OR PROVIDED BY, THIS SHELL SCRIPT WILL MEET YOUR
@@ -95,7 +95,7 @@ else
 	/usr/sbin/service dnsmasq restart ;
 	/srv/PiAP/bin/interface_AP_heal.bash ${WAN_IFACE} ;
 	sleep 0.5
-	/srv/PiAP/bin/interface_AP_heal.bash ${LAN_IFACE} ;
+	/srv/PiAP/bin/interface_AP_heal.bash ${LAN_IFACE} ; wait ;
 	if [[ ( $LAN_IS_BRIDGED -gt 0 ) ]] ; then
 		for SUB_LAN_IFACE in $(brctl show ${LAN_IFACE} 2>/dev/null | column -t | tr -s \\t ' ' | cut -d\  -f 4 | tail -n +2 ) ; do
 			/srv/PiAP/bin/interface_AP_heal.bash ${SUB_LAN_IFACE} ;
@@ -118,12 +118,15 @@ if [[ ( ${CLEAN_UP:-0} -gt 0 ) ]] || [[ ( -z $(ping -nc 1 -s ${DATA_SIZE:-55} $(
 fi
 
 if [[ ( $( ntpq -np | tr -s ' ' | cut -d\  -f 8 | tail -n +3 | fgrep -v 0 | wc -l ) -le 0 ) ]] ; then 
+	# this is a huristic. BEWARE of falshoods believed about time.
 	/etc/cron.hourly/ntp_opengate ;
-	service ntp restart 2>/dev/null ;
+	service ntp restart 2>/dev/null || true ;
 	sleep 1;
 	/etc/cron.hourly/ntp_opengate ;
-	sleep 1 
+	sleep 1;
 	/etc/cron.hourly/ntp_opengate ;
+	fake-hwclock save 2>/dev/null || true ;
+	sync ; sync ;
 fi
 
 rm -f ${LOCK_FILE} >/dev/null || true ; wait ;

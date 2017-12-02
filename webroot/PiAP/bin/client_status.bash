@@ -1,5 +1,5 @@
 #! /bin/bash
-# Disclaimer of Warranties. 
+# Disclaimer of Warranties.
 # A. YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT, TO THE EXTENT PERMITTED BY
 #    APPLICABLE LAW, USE OF THIS SHELL SCRIPT AND ANY SERVICES PERFORMED
 #    BY OR ACCESSED THROUGH THIS SHELL SCRIPT IS AT YOUR SOLE RISK AND
@@ -14,7 +14,7 @@
 #    SOFTWARE AND SERVICES, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
 #    NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF
 #    MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE,
-#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. 
+#    ACCURACY, QUIET ENJOYMENT, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS.
 #
 # C. THE AUTHOR OF PIAP DOES NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE
 #    THE AUTHOR OF PIAP SOFTWARE AND SERVICES, THAT THE FUNCTIONS CONTAINED IN, OR
@@ -59,9 +59,14 @@
 #    the amount of five dollars ($5.00). The foregoing limitations will apply
 #    even if the above stated remedy fails of its essential purpose.
 ################################################################################
-ulimit -t 16
+ulimit -t 15
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
-sudo /srv/PiAP/bin/client_status_table.bash 2>/dev/null || true
+HAS_POCKET_USER=$(id pocket-www 1>&2 2>/dev/null >> /dev/null && echo -n 0 || echo -n $?)
+POCKET_WEB_USER="www-data"
+if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] then 
+        POCKET_WEB_USER="pocket-www"
+fi
+sudo -u "${POCKET_WEB_USER}" -g netdev /usr/bin/python3 -m piaplib.pocket lint check clients --all --html 2>/dev/null || true
 EXIT_CODE=$? ; sudo -k ; wait ;
 exit ${EXIT_CODE:-3} ;
