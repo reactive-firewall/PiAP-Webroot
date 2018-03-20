@@ -262,15 +262,16 @@ install-images: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/images
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo.svg /srv/PiAP/images/logo.svg
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo.png /srv/PiAP/images/logo.png
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/faveicon.ico /srv/PiAP/images/faveicon.ico
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/faveicon.ico /srv/PiAP/faveicon.ico
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo.ico /srv/PiAP/images/logo.ico
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo.ico /srv/PiAP/logo.ico
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/logo_bright.svg /srv/PiAP/images/logo_bright.svg
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/images/transparent.gif /srv/PiAP/images/transparent.gif
 	$(QUIET)$(ECHO) "$@: Done."
 
 uninstall-images: must_be_root
+	$(QUIET)$(RM) /srv/PiAP/logo.ico 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/faveicon.ico 2>/dev/null || true
-	$(QUIET)$(RM) /srv/PiAP/images/faveicon.ico 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/images/favicon.ico 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/images/logo.svg 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/images/logo.png 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/images/logo_bright.svg 2>/dev/null || true

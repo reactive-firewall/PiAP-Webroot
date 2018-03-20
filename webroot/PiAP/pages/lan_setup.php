@@ -13,7 +13,8 @@ include_once 'networking.php';
 		<title>PiAP Lan Setup</title>
 		<meta name="expected-hostname" content="pocket.PiAP.local">
 		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
-		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
 		<meta name="description" content="PiAP Setup">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
