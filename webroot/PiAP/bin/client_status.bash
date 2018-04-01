@@ -59,12 +59,12 @@
 #    the amount of five dollars ($5.00). The foregoing limitations will apply
 #    even if the above stated remedy fails of its essential purpose.
 ################################################################################
-ulimit -t 15
+ulimit -t 20
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 HAS_POCKET_USER=$(id pocket-www 1>&2 2>/dev/null >> /dev/null && echo -n 0 || echo -n $?)
 POCKET_WEB_USER="www-data"
-if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] then 
+if [[ ( ${HAS_POCKET_USER:-1} -lt 1 ) ]] ; then 
         POCKET_WEB_USER="pocket-www"
 fi
 sudo -u "${POCKET_WEB_USER}" -g netdev /usr/bin/python3 -m piaplib.pocket lint check clients --all --html 2>/dev/null || true

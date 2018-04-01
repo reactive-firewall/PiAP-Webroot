@@ -204,6 +204,8 @@ uninstall-pages: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/pages/logview.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/logout.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/landing.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/menu_functions.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/scanning.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/wan_setup.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/lan_setup.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/session.php 2>/dev/null || true
@@ -241,6 +243,8 @@ install-pages: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/wan_setup.php /srv/PiAP/pages/wan_setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/lan_setup.php /srv/PiAP/pages/lan_setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/session.php /srv/PiAP/pages/session.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/menu_functions.php /srv/PiAP/pages/menu_functions.php
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/scanning.php /srv/PiAP/pages/scanning.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_wan_setup.php /srv/PiAP/pages/do_wan_setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_lan_setup.php /srv/PiAP/pages/do_lan_setup.php
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/paranoia.php /srv/PiAP/pages/paranoia.php
@@ -294,6 +298,7 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/dashboard.php
 	$(QUIET)php -l webroot/PiAP/pages/functions.php
 	$(QUIET)php -l webroot/PiAP/pages/dashboard_functions.php
+	$(QUIET)php -l webroot/PiAP/pages/menu_functions.php
 	$(QUIET)php -l webroot/PiAP/pages/networking.php
 	$(QUIET)php -l webroot/PiAP/pages/do_login.php
 	$(QUIET)php -l webroot/PiAP/pages/logout.php
@@ -316,6 +321,7 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/do_auth_setup.php
 	$(QUIET)php -l webroot/PiAP/pages/download_x509.php
 	$(QUIET)php -l webroot/PiAP/pages/PiAP-updates.php
+	$(QUIET)php -l webroot/PiAP/pages/scanning.php
 	$(QUIET)$(ECHO) "$@: Done."
 
 test-extras: cleanup

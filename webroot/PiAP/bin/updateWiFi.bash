@@ -61,6 +61,6 @@
 ################################################################################
 umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
-sudo /srv/PiAP/bin/do_updateWiFi.bash ${@} 2>/dev/null;
+sudo /srv/PiAP/bin/do_updateWiFi.bash "${1}" "${2}" 2>/dev/null;
 
 exit 0;
