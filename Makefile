@@ -72,6 +72,8 @@ ifeq "$(LOG)" "no"
 	QUIET=@
 endif
 
+.SUFFIXES: .zip .php .css .html .bash .sh .py .pyc .txt
+
 PHONY: must_be_root cleanup
 
 build:
@@ -228,39 +230,18 @@ uninstall-pages: must_be_root
 	$(QUIET)$(RMDIR) /srv/PiAP/pages/ 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
-install-pages: install-webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/index.php /srv/PiAP/index.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/pages/
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/index.php /srv/PiAP/pages/index.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/functions.php /srv/PiAP/pages/functions.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/dashboard.php /srv/PiAP/pages/dashboard.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/dashboard_functions.php /srv/PiAP/pages/dashboard_functions.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/networking.php /srv/PiAP/pages/networking.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_login.php /srv/PiAP/pages/do_login.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/logview.php /srv/PiAP/pages/logview.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/logout.php /srv/PiAP/pages/logout.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/landing.php /srv/PiAP/pages/landing.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/wan_setup.php /srv/PiAP/pages/wan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/lan_setup.php /srv/PiAP/pages/lan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/session.php /srv/PiAP/pages/session.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/menu_functions.php /srv/PiAP/pages/menu_functions.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/scanning.php /srv/PiAP/pages/scanning.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_wan_setup.php /srv/PiAP/pages/do_wan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_lan_setup.php /srv/PiAP/pages/do_lan_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/paranoia.php /srv/PiAP/pages/paranoia.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_reboot.php /srv/PiAP/pages/do_reboot.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/power_off.php /srv/PiAP/pages/power_off.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-config.php /srv/PiAP/pages/PiAP-config.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-lan-setup.php /srv/PiAP/pages/PiAP-lan-setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-wan-setup.php /srv/PiAP/pages/PiAP-wan-setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/error.php /srv/PiAP/pages/error.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/profile.php /srv/PiAP/pages/profile.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_auth_setup.php /srv/PiAP/pages/do_auth_setup.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/download_x509.php /srv/PiAP/pages/download_x509.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/updates.php /srv/PiAP/pages/updates.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/do_piaplib_update.php /srv/PiAP/pages/do_piaplib_update.php
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/pages/PiAP-updates.php /srv/PiAP/pages/PiAP-updates.php
+install-pages: install-webroot must_be_root /srv/PiAP/pages/PiAP-updates.php /srv/PiAP/pages/do_piaplib_update.php /srv/PiAP/index.php /srv/PiAP/pages/functions.php /srv/PiAP/pages/dashboard.php /srv/PiAP/pages/dashboard_functions.php /srv/PiAP/pages/networking.php /srv/PiAP/pages/do_login.php /srv/PiAP/pages/logview.php /srv/PiAP/pages/logout.php /srv/PiAP/pages/landing.php /srv/PiAP/pages/wan_setup.php /srv/PiAP/pages/lan_setup.php /srv/PiAP/pages/session.php /srv/PiAP/pages/menu_functions.php /srv/PiAP/pages/scanning.php /srv/PiAP/pages/do_wan_setup.php /srv/PiAP/pages/do_lan_setup.php /srv/PiAP/pages/paranoia.php /srv/PiAP/pages/do_reboot.php /srv/PiAP/pages/power_off.php /srv/PiAP/pages/PiAP-config.php /srv/PiAP/pages/PiAP-lan-setup.php /srv/PiAP/pages/PiAP-wan-setup.php /srv/PiAP/pages/error.php /srv/PiAP/pages/profile.php /srv/PiAP/pages/do_auth_setup.php /srv/PiAP/pages/download_x509.php /srv/PiAP/pages/updates.php
 	$(QUIET)$(ECHO) "$@: Done."
+
+/srv/PiAP/pages/%.php: ./webroot/PiAP/pages/%.php install-webroot must_be_root /srv/PiAP/pages/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) $< $@
+	$(QUIET)$(ECHO) "$@: installed."
+
+/srv/PiAP/index.php: ./webroot/PiAP/index.php install-webroot must_be_root /srv/PiAP/pages/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/index.php /srv/PiAP/index.php
+
+/srv/PiAP/pages/: must_be_root
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/pages/
 
 install-images: install-webroot must_be_root
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/images
@@ -322,6 +303,7 @@ test: cleanup test-extras
 	$(QUIET)php -l webroot/PiAP/pages/download_x509.php
 	$(QUIET)php -l webroot/PiAP/pages/PiAP-updates.php
 	$(QUIET)php -l webroot/PiAP/pages/scanning.php
+	$(QUIET)php -l webroot/PiAP/pages/logview.php
 	$(QUIET)$(ECHO) "$@: Done."
 
 test-extras: cleanup
