@@ -21,6 +21,12 @@ try:
 	import piaplib
 	if piaplib.__name__ is None:
 		raise ImportError("Failed to import saltify from piaplib.")
+	from piaplib import keyring as keyring
+	if keyring.__name__ is None:
+		raise ImportError("Failed to import saltify from piaplib.")
+	from keyring import saltify as saltify
+	if saltify.__name__ is None:
+		raise ImportError("Failed to import saltify from piaplib.")
 except Exception:
 	raise ImportError("Failed to import saltify from piaplib.")
 	exit(255)
@@ -31,7 +37,7 @@ def main(argv=None):
 	# print("PiAP Keyring")
 	try:
 		try:
-			piaplib.keyring.saltify.main(argv)
+			saltify.main(argv)
 		except Exception as cerr:
 			print(str(cerr))
 			print(str(cerr.args))

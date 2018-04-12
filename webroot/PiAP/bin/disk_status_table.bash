@@ -64,6 +64,6 @@ umask 137
 PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 echo "<table id="disk_status" class=\"table table-striped\"><thead><th>Name</th><th>Size</th><th>Type</th><th>Mountpoint</th></thead>"
 echo "<tbody>"
-lsblk --list -o NAME,SIZE,TYPE,MOUNTPOINT | tr -s ' ' ' ' | tail -n +2 | sed -E -e 's/(\s+){1}([^ /[]+){1}(\s*){1}$/&<td><i>none<\/i><\/td>/g' | sed -E -e 's/(\s*){1}([^ ]+){1}(\s*){1}/<td>\2<\/td>/g' | sed -E -e 's/^(.+){1}$/<tr>\1<\/tr>/g' | sed -E -e 's/(<\/td>){2}/<\/td>/g' | sed -E -e 's/(<td>){2}/<td>/g' ;
+lsblk --list -o NAME,SIZE,TYPE,MOUNTPOINT | tr -s ' ' ' ' | tail -n +2 | sed -E -e 's/(\s+){1}([disk]{4}){1}(\s*){1}$/&<td><a_href="https:\/\/pocket.piap.local\/pages\/config_drive.php">Reconfigure<\/a><\/td>/g' | sed -E -e 's/(\s+){1}([^ /]+){1}(\s*){1}$/&<td><i>none<\/i><\/td>/g' | sed -E -e 's/(\s*){1}([^ ]+){1}(\s*){1}/<td>\2<\/td>/g' | sed -E -e 's/^(.+){1}$/<tr>\1<\/tr>/g' | sed -E -e 's/(<\/td>){2}/<\/td>/g' | sed -E -e 's/(<td>){2}/<td>/g' | sed -E -e 's/([a]{1}[_]{1}[h]{1}[ref]{3}){1}/a href/g' ;
 echo "</tbody></table>"
 exit 0 ;

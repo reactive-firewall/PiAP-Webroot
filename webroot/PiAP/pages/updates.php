@@ -13,7 +13,8 @@ include_once 'networking.php';
 		<title>PiAP Updates</title>
 		<meta name="expected-hostname" content="pocket.PiAP.local">
 		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
-		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
 		<meta name="description" content="PiAP Updates">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
@@ -60,7 +61,7 @@ include_once 'networking.php';
 				<div class="row">
 					<?php
 							if (isset($_GET['update_error'])) {
-								echo '<div id="error_alert" class="alert-error"><div class="txt-alert"><strong>Error!</strong> Configuration update failed. Please <a href="https://github.com/reactive-firewall/PiAP-Webroot/issues">report this issue.</a></div></div>';
+								echo '<div id="error_alert" class="alert-error"><div class="txt-alert"><strong>Error!</strong> Pocket PiAP update failed. Please <a href="https://github.com/reactive-firewall/PiAP-Webroot/issues">report this issue.</a></div></div>';
 							}
 							else {
 								if (isset($_GET['update_done'])) {
@@ -85,6 +86,21 @@ include_once 'networking.php';
 							</form>
 						</div>
 					</div> <!-- /piap -->
+				<div class="panel" id="apt_updates_box">
+					<div class="panel-heading">
+						<a name="apt_updates"><h3>Update the System</h3></a>
+					</div>
+					<div class="panel-content">
+						<form action="/pages/do_apt_update.php" method="post" id="apt_update_form" name="apt_update_form" class="form-config">
+							<div class="row">
+								<p class="txt-desc" id="caution">Update of the Operating System. This may take several minutes and should <strong>Not</strong> be inturupted once started.</p>
+							</div>
+							<div class="row">
+								<button class="btn btn-lg btn-primary btn-block" id="update_button" onclick="submit">Update</button>
+							</div>
+						</form>
+					</div>
+				</div> <!-- /apt -->
 			</div> <!-- /row -->
 		<?php endif; ?>
 	  </div> <!-- /container -->

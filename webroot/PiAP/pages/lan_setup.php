@@ -3,6 +3,7 @@
 include_once 'session.php';
 include_once 'functions.php';
 include_once 'networking.php';
+include_once 'menu_functions.php';
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,8 @@ include_once 'networking.php';
 		<title>PiAP Lan Setup</title>
 		<meta name="expected-hostname" content="pocket.PiAP.local">
 		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
-		<link rel="icon" type="image/x-icon" href="https://https://pocket.PiAP.local/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
 		<meta name="description" content="PiAP Setup">
 		<meta name="author" content="PiAP">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" />
@@ -28,34 +30,7 @@ include_once 'networking.php';
 				<span class="panel-alert">You are not authorized to access this page.</span> Please <a href="/pages/index.php">login</a>.
 			</p>
 		<?php else : ?>
-			<nav>
-				<ul class="topnav">
-					<li><a href="#">PiAP</a></li>
-					<li><a href="/pages/dashboard.php">Dashboard</a></li>
-					<li class="dropdown">
-					<a href="javascript:void(0)" class="dropbtn">Configuration</a>
-					<div class="dropdown-content">
-						<a href="#">Lan Setup</a>
-						<a href="/pages/wan_setup.php">Wan Setup</a>
-						<a href="/pages/profile.php">User Setup</a>
-					</div>
-					</li>
-					<li class="dropdown">
-						<a href="javascript:void(0)" class="dropbtn">Command Center</a>
-						<div class="dropdown-content">
-							<a href="/pages/updates.php">Updates</a>
-						</div>
-					</li>
-					<li class="dropdown">
-					<a href="javascript:void(0)" class="dropbtn">Power</a>
-					<div class="dropdown-content">
-						<a href="/pages/do_reboot.php">Reboot</a>
-						<a href="/pages/power_off.php">Turn Off</a>
-					</div>
-					</li>
-					<li class="right"><a class="logout-btn" href="/pages/logout.php">Logoff</a></li>
-				</ul>
-			</nav>
+		<?php echo topNavMenu() ;; ?>
 			<div class="container">
 				<div class="row">
 					<div class="panel" id="networking_box">

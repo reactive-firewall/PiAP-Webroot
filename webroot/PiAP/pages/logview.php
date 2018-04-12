@@ -72,12 +72,13 @@ if (isset($_GET['path']) === true) {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- <base href="https://pocket.PiAP.local/" target="logout"> -->
 		<title>View Log</title>
-		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/favicon.ico">
+		<meta name="expected-hostname" content="pocket.PiAP.local">
+		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
+		<link rel="icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="https://pocket.PiAP.local/logo.ico">
 		<!-- RFC2318 defines text/css -->
 		<link rel="stylesheet" type="text/css" href="/styles/main.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/styles/grid.css"/>
-		<meta name="expected-hostname" content="pocket.PiAP.local">
-		<meta content="https://pocket.PiAP.local/images/logo.png" property="og:image">
 		<meta http-equiv="default-style" content="/styles/main.css">
 		<meta name="description" content="PiAP Template Page">
 		<meta name="keywords" content="PiAP, Template, WiFi, Access Point, Security">
