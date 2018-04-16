@@ -2,7 +2,7 @@
 
 # License
 #
-# Copyright (c) 2017 Mr. Walls
+# Copyright (c) 2017-2018 Mr. Walls
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -323,6 +323,11 @@ cleanup:
 	$(QUIET)$(RM) webroot/PiAP/bin/*~ 2>/dev/null || true
 	$(QUIET)$(RM) webroot/PiAP/bin/*.pyc 2>/dev/null || true
 	$(QUIET)$(RM) webroot/PiAP/*~ 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/.DS_Store 2>/dev/null || true
+	$(QUIET)$(RM) webroot/PiAP/**/.DS_Store 2>/dev/null || true
+	$(QUIET)$(RM) webroot/**/.DS_Store 2>/dev/null || true
+	$(QUIET)$(RM) webroot/.DS_Store 2>/dev/null || true
+	$(QUIET)$(RM) .DS_Store 2>/dev/null || true
 	$(QUIET)$(RM) webroot/PiAP/cache/* 2>/dev/null || true
 	$(QUIET)$(RM) ./*~ 2>/dev/null || true
 	$(QUIET)$(RM) webroot/PiAP/bin/*.pyc 2>/dev/null || true
