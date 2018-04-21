@@ -227,6 +227,7 @@ uninstall-pages: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/pages/updates.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/do_piaplib_update.php 2>/dev/null || true
 	$(QUIET)$(RM) /srv/PiAP/pages/PiAP-updates.php 2>/dev/null || true
+	$(QUIET)$(RM) /srv/PiAP/pages/scanning.php 2>/dev/null || true
 	$(QUIET)$(RMDIR) /srv/PiAP/pages/ 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
