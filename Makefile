@@ -312,7 +312,7 @@ test-extras: cleanup
 	$(QUIET)$(ECHO) "$@: Done."
 
 test-tox: cleanup
-	$(QUIET)tox flake
+	$(QUIET)$(ECHO) "$@: Skipped for webroot."
 	$(QUIET)$(ECHO) "$@: Done."
 
 cleanup:
