@@ -72,7 +72,7 @@ ifeq "$(LOG)" "no"
 	QUIET=@
 endif
 
-.SUFFIXES: .zip .php .css .html .bash .sh .py .pyc .txt
+.SUFFIXES: .zip .php .css .html .bash .sh .py .pyc .txt .js
 
 PHONY: must_be_root cleanup
 
@@ -312,7 +312,7 @@ test-extras: cleanup
 	$(QUIET)$(ECHO) "$@: Done."
 
 test-tox: cleanup
-	$(QUIET)tox flake
+	$(QUIET)$(ECHO) "$@: Skipped for webroot."
 	$(QUIET)$(ECHO) "$@: Done."
 
 cleanup:
