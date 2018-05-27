@@ -1,6 +1,7 @@
 <?php
 include_once 'session.php';
 include_once 'functions.php';
+include_once 'menu_functions.php';
 function startsWith($haystack, $needle)
 {
      $length = strlen($needle);
@@ -91,35 +92,7 @@ if (isset($_GET['path']) === true) {
 				<span class="error">You are not authorized to access this page.</span> Please <a href="index.php">login</a>.
 			</p>
 		<?php else : ?>
-		<nav>
-			<ul class="topnav">
-				<li><a class="active" href="#">PiAP</a></li>
-				<li><a class="active" href="#">Dashboard</a></li>
-				<li class="dropdown">
-					<a href="javascript:void(0)" class="dropbtn">Configuration</a>
-					<div class="dropdown-content">
-						<a href="/pages/lan_setup.php">Lan Setup</a>
-						<a href="/pages/wan_setup.php">Wan Setup</a>
-						<a href="/pages/profile.php">User Setup</a>
-					</div>
-				</li>
-				<li class="dropdown">
-					<a href="javascript:void(0)" class="dropbtn">Command Center</a>
-					<div class="dropdown-content">
-						<a href="/pages/updates.php">Updates</a>
-						<a href="#">Logs</a>
-					</div>
-				</li>
-				<li class="dropdown">
-					<a href="javascript:void(0)" class="dropbtn">Power</a>
-					<div class="dropdown-content">
-						<a href="/pages/do_reboot.php">Reboot</a>
-						<a href="/pages/power_off.php">Turn Off</a>
-					</div>
-				</li>
-				<li class="right"><a class="logout-btn" href="/pages/logout.php">Logoff</a></li>
-			</ul>
-		</nav>
+		<?php echo topNavMenu() ;; ?>
 		<div class="container">
 			<div class="row"><h1>LOG <?php xecho($log_path); ?></h1></div>
 				<div class="row">

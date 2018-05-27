@@ -29,7 +29,7 @@ body {
 
 @media screen-reader {
 	.sr-only {
-		width: 0px;
+		width: 0;
 		display: none !important;
 		hidden: true;
 	}
@@ -129,7 +129,6 @@ ALERT errors
   position: relative;
   padding: 25px;
   color: #f04040;
-  padding: 6px 12px;
   margin: 0 auto;
   margin-bottom: 0;
   white-space: wrap;
@@ -138,7 +137,6 @@ ALERT errors
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border: 1px solid transparent;
   border-radius: 4px;
   background-color: none;
   background-image: linear-gradient(to bottom,#f0dede 0,#e9c3c3 100%);
@@ -157,7 +155,6 @@ ALERT Success
   position: relative;
   padding: 25px;
   color: #204020;
-  padding: 6px 12px;
   margin: 0 auto;
   margin-bottom: 0;
   white-space: wrap;
@@ -166,7 +163,6 @@ ALERT Success
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border: 1px solid transparent;
   border-radius: 4px;
   background-color: none;
   background-image: linear-gradient(to bottom,#def0de 0,#c3e9c3 100%);
