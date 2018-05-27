@@ -1,9 +1,9 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # Pocket PiAP-keyring-saltify stub
 # ..................................
-# Copyright (c) 2017, Kendrick Walls
+# Copyright (c) 2017-2018, Kendrick Walls
 # ..................................
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
