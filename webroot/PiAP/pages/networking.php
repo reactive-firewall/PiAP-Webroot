@@ -4,7 +4,7 @@ include_once 'paranoia.php';
 include_once 'functions.php';
 
 function client_list() {
-	exec(sprintf('../bin/client_status.bash'), $res, $rval);;
+	exec(sprintf('python3 -m piaplib.pocket lint check iface --all --html'), $res, $rval);;
 	if ($rval === 0) {
 		$blob = "<div class=\"row\">";
 		for ($num = 0; $num < count($res) ; $num++) {
