@@ -38,10 +38,10 @@ function xerror_tagline() {
     case 8:
         $theResult = "This is not the page you seek. But here you are.";;
         break;
-	case 9:
+    case 9:
         $theResult = "Uh oh! Sod's law struck again!";;
         break;
-   	case 10:
+    case 10:
         $theResult = "Uh oh! The server's bit got crossed! Give it a second to recover.";;
         break;
    	case 11:
@@ -101,7 +101,7 @@ function xerror_tagline() {
 			</div>
 		</div>
 		<div class="row">
-			<p class="txt-action" id="error_sass"><?php xerror_tagline(); ?></p>
+			<p class="txt-action" id="error_sass"><?php xecho(xerror_tagline()); ?></p>
 			<p class="txt-action" id="error_help">... or perhaps just try again.</p>
 		</div>
 	</div>
