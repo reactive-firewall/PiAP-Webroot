@@ -61,7 +61,6 @@ function topNavMenu($page) {
 								  )
 	);;
 	$blob .= "<ul class=\"topnav\">\n";
-	$blob .= "<li><a class=\"active\" href=\"#\">PiAP</a></li>";
 	for ($row = 0; $row < 5; $row++)
 	{
 		if ($pages[$row]["Active"] === true){
