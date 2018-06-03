@@ -21,42 +21,17 @@ include_once 'networking.php';
 		<link rel="stylesheet" type="text/css" href="/styles/form_config.css" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="/styles/grid.css" media="screen"/>
 		<!-- RFC4329 defines application/javascript -->
+		<script type="application/javascript" src="/scripts/sha512.js" charset="UTF-8"></script>
+		<script type="application/javascript" src="/scripts/hashing.js" charset="UTF-8"></script>
 	</head>
 	<body>
 		<?php if (login_check() != true) : ?>
-		<div class="container">
-			<p>
-				<span class="panel-alert">You are not authorized to access this page.</span> Please <a href="/pages/index.php">login</a>.
-			</p>
+			<div class="container">
+				<p>
+					<span class="error">You are not authorized to access this page.</span> Please <a href="index.php">login</a>.
+				</p>
 		<?php else : ?>
-			<nav>
-				<ul class="topnav">
-					<li><a href="#">PiAP</a></li>
-					<li><a href="/pages/dashboard.php">Dashboard</a></li>
-					<li class="dropdown">
-					<a href="javascript:void(0)" class="dropbtn">Configuration</a>
-					<div class="dropdown-content">
-						<a href="/pages/lan_setup.php">Lan Setup</a>
-						<a href="/pages/wan_setup.php">Wan Setup</a>
-						<a href="#">User Setup</a>
-					</div>
-					</li>
-					<li class="dropdown">
-						<a href="javascript:void(0)" class="dropbtn">Command Center</a>
-						<div class="dropdown-content">
-							<a href="/pages/updates.php">Updates</a>
-						</div>
-					</li>
-					<li class="dropdown">
-						<a href="javascript:void(0)" class="dropbtn">Power</a>
-						<div class="dropdown-content">
-							<a href="/pages/do_reboot.php">Reboot</a>
-							<a href="/pages/power_off.php">Turn Off</a>
-						</div>
-					</li>
-					<li class="right"><a class="logout-btn" href="/pages/logout.php">Logoff</a></li>
-				</ul>
-			</nav>
+			<?php echo topNavMenu() ;; ?>
 			<div class="container">
 				<div class="row">
 					<div class="panel" id="settings_box">
