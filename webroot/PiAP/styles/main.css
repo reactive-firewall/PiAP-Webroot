@@ -57,6 +57,7 @@ Generic inputs,
 */
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
     -webkit-appearance: button;
+    -moz-appearance: button;
     cursor: pointer;
 }
 
@@ -120,15 +121,12 @@ Generic Buttons
 }
 
 /*
-ALERT errors 
-	Show error messages in red.
-	What a mess.
+ALERT Style
 */
-.alert-error {
+.alert-error, .alert-success {
   max-width: 330px;
   position: relative;
   padding: 25px;
-  color: #f04040;
   margin: 0 auto;
   margin-bottom: 0;
   white-space: wrap;
@@ -139,8 +137,17 @@ ALERT errors
   user-select: none;
   border-radius: 4px;
   background-color: none;
-  background-image: linear-gradient(to bottom,#f0dede 0,#e9c3c3 100%);
   background-repeat: repeat-x;
+}
+
+/*
+ALERT errors 
+	Show error messages in red.
+	What a mess.
+*/
+.alert-error {
+  color: #f04040;
+  background-image: linear-gradient(to bottom,#f0dede 0,#e9c3c3 100%);
   border: 1px solid #efc0c0;
 }
 
@@ -151,22 +158,8 @@ ALERT Success
 	Colors should be in sync with the error alerts but in green.
 */
 .alert-success {
-  max-width: 330px;
-  position: relative;
-  padding: 25px;
   color: #204020;
-  margin: 0 auto;
-  margin-bottom: 0;
-  white-space: wrap;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border-radius: 4px;
-  background-color: none;
   background-image: linear-gradient(to bottom,#def0de 0,#c3e9c3 100%);
-  background-repeat: repeat-x;
   border: 1px solid #80ef80;
 }
 
