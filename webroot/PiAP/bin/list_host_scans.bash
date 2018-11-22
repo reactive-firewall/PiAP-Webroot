@@ -62,7 +62,7 @@
 echo "<div id=\"scan_report\">" ;
 echo "<form id=\"scan_form\">" ;
 echo "<select id=\"scan_targets\">" ;
-ls -1 /srv/PiAP/files/scans/ 2>/dev/null | sort | grep -F "scan_" 2>/dev/null | grepip 2>/dev/null | sed -E -e 's/(^\s*|[^-0-9.]+){1}((:?[12]?[0-9]?[0-9]{1}[\.]{1}){3}(:?[12]?[0-9]?[0-9]{1}){1}){1}(\s*){1}/\1<option value=\"scan_\2.xml\">\2<\/option>/g' 2>/dev/null ; wait ;
+find /srv/PiAP/files/scans/ -type f -print 2>/dev/null | sort | grep -F "scan_" 2>/dev/null | grepip 2>/dev/null | sed -E -e 's/(^\s*|[^-0-9.]+){1}((:?[12]?[0-9]?[0-9]{1}[\.]{1}){3}(:?[12]?[0-9]?[0-9]{1}){1}){1}(\s*){1}/\1<option value=\"scan_\2.xml\">\2<\/option>/g' 2>/dev/null ; wait ;
 echo "</select>" ;
 echo "</form>" ;
 echo "</div>" ;
