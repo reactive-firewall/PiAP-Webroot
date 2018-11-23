@@ -14,10 +14,10 @@
 
 
 # Pocket PiAP
-### Copyright (c) 2017, Kendrick Walls
+### Copyright (c) 2017-2018, Kendrick Walls
 #####
 ##### (SOME COMPONENTS HAVE SEPARATE LICENSE, see those for details)
-##### 2017 github.com/reactive-firewall/PiAP-Webroot
+##### 2017-2018 github.com/reactive-firewall/PiAP-Webroot
 #####
 #####  Disclaimer of Warranties. 
 #####  A. YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT, TO THE EXTENT PERMITTED BY

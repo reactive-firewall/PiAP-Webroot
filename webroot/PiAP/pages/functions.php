@@ -343,8 +343,8 @@ function has_downloaded_x509_check() {
 }
 
 function login($username, $password) {
-	// harden timming (if only up to a point) by taking at least 0.5 seconds per attempt
-	$time_to_answer = (microtime(true)+0.5);;
+	// harden timming (if only up to a point) by taking at least 1 seconds per attempt
+	$time_to_answer = (microtime(true)+rand(1, 3));;
 	//pick the spices
 	$pepper = get_pepper() ;
 	$salt = get_salt($username, $pepper) ;
