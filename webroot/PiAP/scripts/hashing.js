@@ -71,7 +71,7 @@
 function hashsubmit(sensitive_input, context_in) {
 	// find the real context
 	var context = (sensitive_input).closest("form");
-	if (context_in.id == context.id){
+	if (context_in.id === context.id){
 		//probably the same and safe to use
 		var hashed_input = document.createElement("input");
 		context_in.appendChild(hashed_input);
@@ -84,7 +84,7 @@ function hashsubmit(sensitive_input, context_in) {
 		// clear the PLAIN TEXT value
 		sensitive_input.required = false;
 		sensitive_input.value = "";
-		// Finally submit the form. 
+		// Finally submit the form.
 		context_in.submit();
 		return true;
 	}
