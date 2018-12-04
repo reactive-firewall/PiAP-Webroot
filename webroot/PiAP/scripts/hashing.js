@@ -70,26 +70,25 @@
  */
 function hashsubmit(sensitive_input, context_in) {
   // find the real context
-  var context = (sensitive_input).closest("form");
+  var context = (sensitive_input).closest('form');
   if (context_in.id === context.id) {
-    //probably the same and safe to use
-    var hashed_input = document.createElement("input");
-    context_in.appendChild(hashed_input);
+    // probably the same and safe to use
+    var HashedInput = document.createElement('input')
+    context_in.appendChild(HashedInput);
     // hash the sensitive data for privacy
-    hashed_input.name = "p";
-    hashed_input.type = "hidden";
-    var shaObj = new jsSHA("SHA-512", "TEXT");
-    shaObj.update(sensitive_input.value);
-    hashed_input.value = shaObj.getHash("HEX");
+    HashedInput.name = 'p'
+    HashedInput.type = 'hidden'
+    var shaObj = new jsSHA('SHA-512', 'TEXT')
+    shaObj.update(sensitive_input.value)
+    HashedInput.value = shaObj.getHash('HEX')
     // clear the PLAIN TEXT value
-    sensitive_input.required = false;
-    sensitive_input.value = "";
+    sensitive_input.required = false
+    sensitive_input.value = ''
     // Finally submit the form.
-    context_in.submit();
-    return true;
-  }
-  else {
-    sensitive_input.value = "";
-    return false;
+    context_in.submit()
+    return true
+  } else {
+    sensitive_input.value = ''
+    return false
   }
 }
