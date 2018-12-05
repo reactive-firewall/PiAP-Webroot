@@ -87,8 +87,7 @@ function hashsubmit(sensitive_input, context_in) {
     // Finally submit the form.
     context_in.submit();
     return true;
-  }
-  else {
+  } else {
     sensitive_input.value = '';
     return false;
   }
