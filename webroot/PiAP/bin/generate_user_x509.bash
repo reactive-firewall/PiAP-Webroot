@@ -78,7 +78,7 @@ rm -f ${FILE_STUB_PATH:-client}.csr 2>/dev/null > /dev/null || true
 openssl genrsa -out ${FILE_STUB_PATH:-client}.key 2048 2>/dev/null > /dev/null || EXIT_CODE=2
 openssl req -new -key ${FILE_STUB_PATH:-client}.key -subj "/CN=${CN_USERNAME}/OU=Client/O=PiAP\ Network/" -out ${FILE_STUB_PATH:-client}.csr 2>/dev/null > /dev/null || EXIT_CODE=2 
 # this could be improved
-sudo -u pocket-admin /opt/PiAP/sbin/autosign_client.bash ${CN_USERNAME:-client} 2>/dev/null > /dev/null || EXIT_CODE=2
+sudo -u pocket-admin /opt/PiAP/sbin/autosign_client ${CN_USERNAME:-client} 2>/dev/null > /dev/null || EXIT_CODE=2
 
 openssl pkcs12 -export -nodes -in ${FILE_STUB_PATH}.pem -inkey ${FILE_STUB_PATH}.key -passout env:CN_USERNAME -out ${FILE_STUB_PATH}.p12 -name "${1}" 2>/dev/null > /dev/null || EXIT_CODE=3
 cp -f ${FILE_STUB_PATH}.p12 ${LINK_STUB_PATH}.p12 2>/dev/null > /dev/null || EXIT_CODE=3
