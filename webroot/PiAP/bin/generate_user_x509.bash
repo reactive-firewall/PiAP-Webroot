@@ -66,7 +66,7 @@ PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 # CWE-20 if this admin tool is exposed directly
 CN_USERNAME="${1:-operator}"
 # USER_ID - the user id used for the certificate
-USER_ID=$(/srv/dsauth.py -C -f /srv/PiAP/files/db/passwd -X $(sudo -u pocket-www head -n 1 /srv/PiAP/files/db/pepper ) -U "${CN_USERNAME}" | grep -vF "None" 2>/dev/null )
+USER_ID=$("/srv/dsauth.py" -C -f /srv/PiAP/files/db/passwd -X $(sudo -u pocket-www head -n 1 /srv/PiAP/files/db/pepper ) -U "${CN_USERNAME}" | grep -vF "None" 2>/dev/null )
 # Create the Client Key and CSR
 LINK_STUB_PATH="/srv/PiAP/files/db/x509/${USER_ID:-client}"
 FILE_STUB_PATH="/etc/ssl/PiAPCA/certs/${USER_ID:-client}"
