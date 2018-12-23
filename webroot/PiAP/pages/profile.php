@@ -1,6 +1,7 @@
 <?php
 
 include 'session.php';
+include_once 'menu_functions.php';
 include_once 'functions.php';
 include_once 'networking.php';
 
