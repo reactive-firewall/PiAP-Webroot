@@ -9,7 +9,7 @@ if (login_check() === true){
 	function get_x509(){
 		// check the pepper var is empty
 		$x509_data = "";;
-		$file_path = "../files/x509/";
+		$file_path = "../files/db/x509/";
 		$file_path .= get_user_id(getUserName(), get_pepper());
 		$file_path .= ".p12" ;;
 		try {
