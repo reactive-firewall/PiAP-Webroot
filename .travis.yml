@@ -1,5 +1,4 @@
 language: php
-sudo: false
 
 branches:
   only:
@@ -9,88 +8,109 @@ branches:
 matrix:
   include:
   - os: linux
-    dist: "Trusty"
+    dist: "trusty"
     php: "5.6"
   - os: linux
-    dist: "Trusty"
-    php: "7.1"
-  - os: linux
-    dist: "Trusty"
+    dist: "trusty"
     php: "nightly"
   - os: linux
-    dist: "Xenial"
-    php: "5.6"
-  - os: linux
-    dist: "Xenial"
+    dist: "xenial"
     php: "7.1"
   - os: linux
-    dist: "Xenial"
+    dist: "xenial"
+    php: "nightly"
+  - os: linux
+    dist: "bionic"
+    php: "7.4"
+  - os: linux
+    dist: "bionic"
     php: "nightly"
   - os: osx
-    osx_image: xcode7.3
-    language: generic
+    osx_image: xcode11
+    language: shell
   - os: osx
-    osx_image: xcode8
-    language: generic
+    osx_image: xcode11.1
+    language: shell
   - os: osx
-    osx_image: xcode8.3
-    language: generic
+    osx_image: xcode11.2
+    language: shell
   - os: osx
-    osx_image: xcode9
-    language: generic
-  - os: osx
-    osx_image: xcode9.4
-    language: generic
-  - os: osx
-    osx_image: xcode10
-    language: generic
-  - os: osx
-    osx_image: xcode10.1
-    language: generic
+    osx_image: xcode11.3
+    language: shell
   allow_failures:
   - os: linux
-    dist: "Xenial"
+    dist: "trusty"
     php: "5.6"
   - os: linux
-    dist: "Xenial"
+    dist: "trusty"
     php: "7.1"
   - os: linux
-    dist: "Xenial"
+    dist: "trusty"
+    php: "nightly"
+  - os: linux
+    dist: "xenial"
+    php: "5.6"
+  - os: linux
+    dist: "xenial"
+    php: "7.1"
+  - os: linux
+    dist: "xenial"
+    php: "nightly"
+  - os: linux
+    dist: "bionic"
     php: "nightly"
   - os: osx
     osx_image: xcode6.4
-    language: generic
+    language: shell
   - os: osx
     osx_image: xcode7.3
-    language: generic
+    language: shell
+  - os: osx
+    osx_image: xcode7.3
+    language: shell
   - os: osx
     osx_image: xcode8
-    language: generic
+    language: shell
   - os: osx
     osx_image: xcode8.3
-    language: generic
+    language: shell
   - os: osx
     osx_image: xcode9
-    language: generic
+    language: shell
+  - os: osx
+    osx_image: xcode9
+    language: shell
   - os: osx
     osx_image: xcode9.2
-    language: generic
+    language: shell
   - os: osx
     osx_image: xcode9.3
-    language: generic
-
+    language: shell
+  - os: osx
+    osx_image: xcode9.4
+    language: shell
+  - os: osx
+    osx_image: xcode10
+    language: shell
+  - os: osx
+    osx_image: xcode10.1
+    language: shell
+  - os: osx
+    osx_image: xcode11
+    language: shell
+  - os: osx
+    osx_image: xcode11.1
+    language: shell
 
 before_install:
-  - if [ $TRAVIS_OS_NAME == osx ] ; then brew upgrade || true ; fi
-  - if [ $TRAVIS_OS_NAME == osx ] ; then brew install php7 $INSTALL || true ; fi
-
-install: "true"
-
-after_script:
-  - make clean
+      - if [ $TRAVIS_OS_NAME == osx ] ; then brew upgrade || true ; fi
+      - if [ $TRAVIS_OS_NAME == osx ] ; then brew install php7 $INSTALL || true ; fi
 
 before_script:
-  - make clean
+      - make clean
 
 script:
-  - make test
+      - make test
+
+after_script:
+      - make clean
