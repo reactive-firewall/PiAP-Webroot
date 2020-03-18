@@ -19,5 +19,4 @@
 *.html			text diff=html
 *.css			text diff=css
 *.xsl			text
-tests/check_*	text
 Makefile		text diff=makefile
