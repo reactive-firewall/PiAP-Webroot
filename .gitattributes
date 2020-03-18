@@ -1,0 +1,22 @@
+*				text=auto
+*.cfg			text
+*.conf			text
+*.ini			text
+*.yml			text
+*.txt			text
+*.LICENSE		text
+*.md			text
+*.py			text working-tree-encoding=UTF-8 diff=python
+*.php			text diff=php
+*.js			text
+*.sh			text
+*.bash			text
+*.jpg			-text
+*.png			-text
+*.ico			-text
+*.gif			-text
+*.svg			text
+*.html			text diff=html
+*.css			text diff=css
+*.xsl			text
+Makefile		text diff=makefile

@@ -2,7 +2,7 @@
 
 # License
 #
-# Copyright (c) 2017-2019 Mr. Walls
+# Copyright (c) 2017-2020 Mr. Walls
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -23,6 +23,7 @@
 # copies or substantial portions of the Software.
 #
 
+SHELL=/bin/bash
 
 ifeq "$(ECHO)" ""
 	ECHO=echo
@@ -157,12 +158,10 @@ uninstall-cgi: must_be_root
 	$(QUIET)$(RMDIR) /srv/PiAP/bin 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
-install-scripts: install-webroot must_be_root
+install-scripts: install-webroot must_be_root /srv/PiAP/files/text/
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/scripts
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/hashing.js /srv/PiAP/scripts/hashing.js
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/scripts/sha512.js /srv/PiAP/scripts/sha512.js
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files/text
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/files/text/sha512.js.LICENSE /srv/PiAP/files/text/sha512.js.LICENSE
 	$(QUIET)$(ECHO) "$@: Done."
 
@@ -174,17 +173,23 @@ uninstall-scripts: must_be_root
 	$(QUIET)$(RMDIR) /srv/PiAP/files/text/sha512.js.LICENSE 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
-install-styles: install-webroot must_be_root
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/styles
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/main.css /srv/PiAP/styles/main.css
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/grid.css /srv/PiAP/styles/grid.css
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/sign_in.css /srv/PiAP/styles/sign_in.css
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/form_config.css /srv/PiAP/styles/form_config.css
+install-styles: install-webroot must_be_root must_be_root /srv/PiAP/styles/ /srv/PiAP/files/text/ /srv/PiAP/styles/main.css /srv/PiAP/styles/grid.css /srv/PiAP/styles/sign_in.css /srv/PiAP/styles/form_config.css
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/styles/loaders.min.css /srv/PiAP/styles/loaders.min.css
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files || true
-	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files/text || true
 	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) ./webroot/PiAP/files/text/loader.min.css.LICENSE /srv/PiAP/files/text/loader.min.css.LICENSE || true
 	$(QUIET)$(ECHO) "$@: Done."
+
+/srv/PiAP/styles/: install-webroot must_be_root
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/styles
+
+/srv/PiAP/files/: install-webroot must_be_root
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files || true
+
+/srv/PiAP/files/text/: install-webroot must_be_root /srv/PiAP/files/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_DIR_OPTS) /srv/PiAP/files/text || true
+
+/srv/PiAP/styles/%.css: ./webroot/PiAP/styles/%.css install-webroot must_be_root /srv/PiAP/styles/
+	$(QUIET)$(INSTALL) $(INST_OWN) $(INST_FILE_OPTS) $< $@
+	$(QUIET)$(ECHO) "$@: installed."
 
 uninstall-styles: must_be_root
 	$(QUIET)$(RM) /srv/PiAP/styles/main.css 2>/dev/null || true
@@ -339,12 +344,12 @@ cleanup:
 	$(QUIET)$(RMDIR) ./.tox/ 2>/dev/null || true
 
 clean: cleanup
-	$(QUIET)$(MAKE) -s -C ./docs/ -f Makefile clean 2>/dev/null || true
+	$(QUIET)$(MAKE) -j1 -s -C ./docs/ -f Makefile clean 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
 python-tools:
 	$(QUIET)$(ECHO) "$@: Upgrading python tools."
-	$(QUIET)python3 -m pip install --upgrade "git+https://github.com/reactive-firewall/PiAP-python-tools.git@stable#egg=piaplib" 2>/dev/null || true
+	$(QUIET)python3 -m pip3 install --upgrade "git+https://github.com/reactive-firewall/PiAP-python-tools.git@stable#egg=piaplib" 2>/dev/null || true
 	$(QUIET)python -m pip install --upgrade "git+https://github.com/reactive-firewall/PiAP-python-tools.git@stable#egg=piaplib" 2>/dev/null || true
 	$(QUIET)$(ECHO) "$@: Done."
 
